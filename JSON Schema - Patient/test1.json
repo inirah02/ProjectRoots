@@ -1,0 +1,103 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "Patient Name",
+        "age",
+        "Favorite color",
+        "Spouse Name",
+        "Doctor's Name",
+        "City of Residence",
+        "Diagnosed Illness",
+        "Address",
+        "Hospital Name"
+    ],
+    "properties": {
+        "Patient Name": {
+            "type": "string",
+            "default": "",
+            "title": "The Patient Name Schema",
+            "examples": [
+                "Rajesh"
+            ]
+        },
+        "age": {
+            "type": "integer",
+            "default": 0,
+            "title": "The age Schema",
+            "examples": [
+                60
+            ]
+        },
+        "Favorite color": {
+            "type": "string",
+            "default": "",
+            "title": "The Favorite color Schema",
+            "examples": [
+                "Pink"
+            ]
+        },
+        "Spouse Name": {
+            "type": "string",
+            "default": "",
+            "title": "The Spouse Name Schema",
+            "examples": [
+                "Disha"
+            ]
+        },
+        "Doctor's Name": {
+            "type": "string",
+            "default": "",
+            "title": "The Doctor's Name Schema",
+            "examples": [
+                "Neha"
+            ]
+        },
+        "City of Residence": {
+            "type": "string",
+            "default": "",
+            "title": "The City of Residence Schema",
+            "examples": [
+                "Bengaluru"
+            ]
+        },
+        "Diagnosed Illness": {
+            "type": "string",
+            "default": "",
+            "title": "The Diagnosed Illness Schema",
+            "examples": [
+                "Dementia"
+            ]
+        },
+        "Address": {
+            "type": "string",
+            "default": "",
+            "title": "The Address Schema",
+            "examples": [
+                "Jayanagar"
+            ]
+        },
+        "Hospital Name": {
+            "type": "string",
+            "default": "",
+            "title": "The Hospital Name Schema",
+            "examples": [
+                "Fortis"
+            ]
+        }
+    },
+    "examples": [{
+        "Patient Name": "Rajesh",
+        "age": 60,
+        "Favorite color": "Pink",
+        "Spouse Name": "Disha",
+        "Doctor's Name": "Neha",
+        "City of Residence": "Bengaluru",
+        "Diagnosed Illness": "Dementia",
+        "Address": "Jayanagar",
+        "Hospital Name": "Fortis"
+    }]
+}
