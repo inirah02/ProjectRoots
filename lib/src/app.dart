@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projectroots/src/activities/reverse_spell.dart';
+import 'package:projectroots/activities.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       home: const Scaffold(
-        body: ReverseSpellActivity(targetWord: "Varuni"),
+        body: WordSearchActivity(),
       ),
     );
   }
