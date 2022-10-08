@@ -1,8 +1,6 @@
-// import 'package:flutter/src/widgets/container.dart';
-// import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:projectroots/src/extensions/string.dart';
 
 class ReverseSpellActivity extends StatefulWidget {
   final String targetWord;
@@ -47,10 +45,10 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
   }
 
   void _onEvaluateAnswer() {
-    print(widget.targetWord);
+    print(widget.targetWord.reverse());
     setState(() {
       correctAns = _textEditingController.text.toLowerCase() ==
-          widget.targetWord.split('').reversed.join("").toLowerCase();
+          widget.targetWord.reverse().toLowerCase();
     });
   }
 
