@@ -14,12 +14,40 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   Set<List<int>> selection = {};
   late final List<List<String>> letterGrid = [];
   final random = Random();
+  Offset lineStart = Offset.zero;
+  Offset lineEnd = Offset.zero;
 
   @override
   void initState() {
     // Generate Letter Grid
-    final letters =
-        List.generate(26, (index) => String.fromCharCode(index + 65));
+    final letters = [
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+      'J',
+      'K',
+      'L',
+      'M',
+      'N',
+      'O',
+      'P',
+      'Q',
+      'R',
+      'S',
+      'T',
+      'U',
+      'V',
+      'W',
+      'X',
+      'Y',
+      'Z'
+    ];
 
     for (var i = 0; i <= 10; i++) {
       List<String> row = [];
@@ -30,17 +58,17 @@ class WordSearchActivityState extends State<WordSearchActivity> {
       letterGrid.insert(i, row);
     }
 
-    const words = ["rohan", "varuni", "harani","monica"];
+    const words = ["rohan", "varuni", "harani", "monica"];
     // TODO: Refactor to avoid collisions on origin values;
     for (final word in words) {
-      Axis wordDirection = Axis.values.elementAt(random.nextInt(Axis.values.length));
-      
+      Axis wordDirection =
+          Axis.values.elementAt(random.nextInt(Axis.values.length));
+
       final wordAsList = word.split('');
-      // final origin = [1, 1]; 
+      // final origin = [1, 1];
       final origin = getWordOrigin(word, wordDirection);
       int startX = origin[0];
       int startY = origin[1];
-
 
       for (int i = 0; i < word.length; i++) {
         if (wordDirection == Axis.horizontal) {
@@ -107,13 +135,42 @@ class WordSearchActivityState extends State<WordSearchActivity> {
     );
   }
 
+  void _startLine(details) {
+    setState(() {
+            lineStart = details.localPosition;
+            lineEnd = details.localPosition;
+          });
+  }
+
+  void _updateLine(details) {
+    setState(() => lineEnd = details.localPosition);
+  }
+
+  void _clearLine() {
+    setState(() {
+      lineStart = Offset.zero;
+      lineEnd = Offset.zero;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Reverse Search"),
       ),
-      body: Center(child: _buildWordGrid(context, letterGrid)),
+      body: Center(
+        child: GestureDetector(
+          onPanStart: (details) => _startLine(details),
+          onPanUpdate: (details) => _updateLine(details),
+          onPanEnd: (details) => _clearLine(),
+          child: CustomPaint(
+            size: Size.infinite,
+            foregroundPainter: LinePainter(lineStart, lineEnd),
+            child: _buildWordGrid(context, letterGrid),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -152,4 +209,26 @@ class GridCell extends StatelessWidget {
       ),
     );
   }
+}
+
+class LinePainter extends CustomPainter {
+  Offset lineStart = Offset.zero;
+  Offset lineEnd = Offset.zero;
+
+  LinePainter(this.lineStart, this.lineEnd);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = Colors.blue
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 4.0;
+    final path = Path()
+      ..moveTo(lineStart.dx, lineStart.dy)
+      ..lineTo(lineEnd.dx, lineEnd.dy);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant LinePainter oldDelegate) => true;
 }
