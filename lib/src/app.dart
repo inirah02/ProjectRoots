@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projectroots/src/activities/picture_quiz/picture_quiz.dart';
 import 'package:projectroots/src/activities/reverse_spell.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,8 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const Scaffold(
-        body: ReverseSpellActivity(targetWord: "Varuni"),
+      home: Scaffold(
+        body: Home(),
       ),
     );
   }
