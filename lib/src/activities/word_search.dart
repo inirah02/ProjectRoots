@@ -1,6 +1,36 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+const letters = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z'
+];
 
 class WordSearchActivity extends StatefulWidget {
   const WordSearchActivity({Key? key}) : super(key: key);
@@ -16,39 +46,19 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   final random = Random();
   Offset lineStart = Offset.zero;
   Offset lineEnd = Offset.zero;
+  final GlobalKey _wordGridKey = GlobalKey();
+  late final List<List<LocalKey>> gridCellKeys = [];
+  final List<String> _letters = [];
+  final int gridSize = 10;
+  final Set<GridCellRenderObject> selectedCells = {};
+  final List<int> selectedCellIndexes = [];
+  final Set<GridCellRenderObject> activeCells = {};
+  final List<int> activeCellIndexes = [];
+  final targetWords = ["rohan", "monica"];
 
   @override
   void initState() {
     // Generate Letter Grid
-    final letters = [
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
-      'L',
-      'M',
-      'N',
-      'O',
-      'P',
-      'Q',
-      'R',
-      'S',
-      'T',
-      'U',
-      'V',
-      'W',
-      'X',
-      'Y',
-      'Z'
-    ];
-
     for (var i = 0; i <= 10; i++) {
       List<String> row = [];
       for (var j = 0; j <= 10; j++) {
@@ -58,28 +68,31 @@ class WordSearchActivityState extends State<WordSearchActivity> {
       letterGrid.insert(i, row);
     }
 
-    const words = ["rohan", "varuni", "harani", "monica"];
+    for (var i = 0; i < (gridSize * gridSize); i++) {
+      _letters.insert(i,"*");
+      // _letters.insert(i, letters.elementAt(random.nextInt(letters.length)));
+    }
+
     // TODO: Refactor to avoid collisions on origin values;
-    for (final word in words) {
+    for (final word in targetWords) {
       Axis wordDirection =
           Axis.values.elementAt(random.nextInt(Axis.values.length));
 
       final wordAsList = word.split('');
-      // final origin = [1, 1];
       final origin = getWordOrigin(word, wordDirection);
       int startX = origin[0];
-      int startY = origin[1];
 
       for (int i = 0; i < word.length; i++) {
-        if (wordDirection == Axis.horizontal) {
-          letterGrid[startX + i][startY] =
-              wordAsList.elementAt(i).toUpperCase();
-        } else {
-          letterGrid[startX][startY + i] =
-              wordAsList.elementAt(i).toUpperCase();
-        }
+        _letters[startX + i] = wordAsList.elementAt(i).toUpperCase();
+        // if (wordDirection == Axis.horizontal) {
+        //   letterGrid[startX + i][startY] =
+        //       wordAsList.elementAt(i).toUpperCase();
+        // } else {
+        //   letterGrid[startX][startY + i] =
+        //       wordAsList.elementAt(i).toUpperCase();
+        // }
       }
-      solutions[word] = [startX, startY];
+      solutions[word] = [startX];
     }
 
     super.initState();
@@ -98,26 +111,64 @@ class WordSearchActivityState extends State<WordSearchActivity> {
     ];
   }
 
+  void _startLine(details) {
+    setState(() {
+      lineStart = details.localPosition;
+      lineEnd = details.localPosition;
+    });
+  }
+
+  void _updateLine(details) {
+    setState(() => lineEnd = details.localPosition);
+    _hitTestGridCell(details.globalPosition);
+  }
+
+  void _clearLine() {
+    setState(() {
+      lineStart = Offset.zero;
+      lineEnd = Offset.zero;
+    });
+    String selectedWord = _letters.getRange(activeCellIndexes.first, activeCellIndexes.last + 1).join();
+
+    for (final word in targetWords) {
+      if(word.toUpperCase() == selectedWord) {
+        setState(() {
+          selectedCellIndexes.addAll(activeCellIndexes);
+        });
+      }
+    }
+    
+    setState(() {
+      activeCellIndexes.clear();
+      activeCells.clear();
+    });
+  }
+
+  _hitTestGridCell(position) {
+    final RenderBox box =
+        _wordGridKey.currentContext!.findRenderObject() as RenderBox;
+    final BoxHitTestResult result = BoxHitTestResult();
+    Offset localPosition = box.globalToLocal(position);
+    if (box.hitTestChildren(result, position: localPosition)) {
+      for (final hit in result.path) {
+        final target = hit.target;
+        if (target is GridCellRenderObject && !activeCells.contains(target)) {
+          setState(() {
+            activeCells.add(target);
+            activeCellIndexes.add(target.index);
+          });
+        }
+      }
+    }
+  }
+
   Widget _buildWordGrid(BuildContext context, List<List<String>> letterGrid) {
     final _grid = List.generate(
       letterGrid.length,
       (int rowIndex) => List.generate(
         letterGrid.length,
-        (int columnIndex) => GridCell(
-            x: rowIndex,
-            y: columnIndex,
-            onSelect: (x, y) => {
-                  if (!selection.contains([x, y]))
-                    {
-                      setState(() => selection.add([x, y]))
-                    }
-                },
-            isPartOfWord: selection.fold(false, (previousValue, element) {
-              if (element[0] == rowIndex && element[1] == columnIndex) {
-                return true;
-              }
-              return false;
-            }),
+        (int columnIndex) => GridCellContainer(
+            key: gridCellKeys[rowIndex][columnIndex],
             letter: letterGrid[rowIndex][columnIndex]),
       ),
     );
@@ -135,22 +186,8 @@ class WordSearchActivityState extends State<WordSearchActivity> {
     );
   }
 
-  void _startLine(details) {
-    setState(() {
-            lineStart = details.localPosition;
-            lineEnd = details.localPosition;
-          });
-  }
-
-  void _updateLine(details) {
-    setState(() => lineEnd = details.localPosition);
-  }
-
-  void _clearLine() {
-    setState(() {
-      lineStart = Offset.zero;
-      lineEnd = Offset.zero;
-    });
+  String getLetter(index) {
+    return _letters.elementAt(index);
   }
 
   @override
@@ -161,13 +198,30 @@ class WordSearchActivityState extends State<WordSearchActivity> {
       ),
       body: Center(
         child: GestureDetector(
+          key: _wordGridKey,
           onPanStart: (details) => _startLine(details),
           onPanUpdate: (details) => _updateLine(details),
           onPanEnd: (details) => _clearLine(),
           child: CustomPaint(
             size: Size.infinite,
             foregroundPainter: LinePainter(lineStart, lineEnd),
-            child: _buildWordGrid(context, letterGrid),
+            // child: _buildWordGrid(context, letterGrid),
+            child: SizedBox(
+              width: 640,
+              height: 640,
+              child: GridView.builder(
+                  itemCount: (gridSize * gridSize),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 10, mainAxisExtent: 64),
+                  itemBuilder: (context, index) => GridCell(
+                        index: index,
+                        child: GridCellContainer(
+                          letter: getLetter(index),
+                          isActive: activeCellIndexes.contains(index),
+                          isSelected: selectedCellIndexes.contains(index),
+                        ),
+                      )),
+            ),
           ),
         ),
       ),
@@ -175,37 +229,58 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   }
 }
 
-class GridCell extends StatelessWidget {
-  final int x;
-  final int y;
+@immutable
+class GridCell extends SingleChildRenderObjectWidget {
+  final int index;
+
+  const GridCell({required this.index, required Widget child, Key? key})
+      : super(key: key, child: child);
+
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    return GridCellRenderObject(index);
+  }
+}
+
+class GridCellRenderObject extends RenderProxyBox {
+  GridCellRenderObject(this.index) : super();
+  int index;
+}
+
+class GridCellContainer extends StatelessWidget {
   final String letter;
-  final bool isPartOfWord;
-  final Function onSelect;
-  const GridCell({
+  final bool isSelected;
+  final bool isActive;
+  const GridCellContainer({
     Key? key,
-    required this.x,
-    required this.y,
     required this.letter,
-    required this.onSelect,
-    this.isPartOfWord = false,
+    this.isSelected = false,
+    this.isActive = false,
   }) : super(key: key);
+
+
+  Color getBackgroundColor(context) {
+    if (isSelected) {
+      return Colors.green;
+    } else if (isActive) {
+      return Colors.lightBlue.shade300;
+    }
+    return Theme.of(context).canvasColor;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onSelect(x, y),
-      child: Container(
-        width: 64,
-        height: 64,
-        decoration: BoxDecoration(
-          color: isPartOfWord ? Colors.green : Theme.of(context).canvasColor,
-          border: Border.all(),
-        ),
-        child: Text(
-          letter,
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(height: 4),
-          textAlign: TextAlign.center,
-        ),
+    return Container(
+      width: 64,
+      height: 64,
+      decoration: BoxDecoration(
+        color: getBackgroundColor(context),
+        border: Border.all(),
+      ),
+      child: Text(
+        letter,
+        style: Theme.of(context).textTheme.bodyText2!.copyWith(height: 4),
+        textAlign: TextAlign.center,
       ),
     );
   }
@@ -220,7 +295,7 @@ class LinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = Colors.blue
+      ..color = Colors.black
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4.0;
     final path = Path()
