@@ -75,15 +75,18 @@ class WordSearchActivityState extends State<WordSearchActivity> {
 
     // TODO: Refactor to avoid collisions on origin values;
     for (final word in targetWords) {
+      print(word);
       Axis wordDirection =
           Axis.values.elementAt(random.nextInt(Axis.values.length));
 
       final wordAsList = word.split('');
       final origin = getWordOrigin(word, wordDirection);
       int startX = origin[0];
+      int startY = origin[1];
+      print("$startX, $startY");
 
       for (int i = 0; i < word.length; i++) {
-        _letters[startX + i] = wordAsList.elementAt(i).toUpperCase();
+        _letters[(gridSize * startY) + (startX + i)] = wordAsList.elementAt(i).toUpperCase();
         // if (wordDirection == Axis.horizontal) {
         //   letterGrid[startX + i][startY] =
         //       wordAsList.elementAt(i).toUpperCase();
@@ -99,16 +102,21 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   }
 
   List<int> getWordOrigin(String word, Axis direction) {
-    if (direction == Axis.horizontal) {
-      return [
-        random.nextInt(letterGrid.length - word.length),
-        random.nextInt(letterGrid.length),
-      ];
-    }
+    final x = random.nextInt(gridSize - word.length);
+    final y = random.nextInt(gridSize);
     return [
-      random.nextInt(letterGrid.length),
-      random.nextInt(letterGrid.length - word.length),
+      x,y
     ];
+    // if (direction == Axis.horizontal) {
+    //   return [
+    //     random.nextInt(letterGrid.length - word.length),
+    //     random.nextInt(letterGrid.length),
+    //   ];
+    // }
+    // return [
+    //   random.nextInt(letterGrid.length),
+    //   random.nextInt(letterGrid.length - word.length),
+    // ];
   }
 
   void _startLine(details) {
@@ -162,30 +170,6 @@ class WordSearchActivityState extends State<WordSearchActivity> {
     }
   }
 
-  Widget _buildWordGrid(BuildContext context, List<List<String>> letterGrid) {
-    final _grid = List.generate(
-      letterGrid.length,
-      (int rowIndex) => List.generate(
-        letterGrid.length,
-        (int columnIndex) => GridCellContainer(
-            key: gridCellKeys[rowIndex][columnIndex],
-            letter: letterGrid[rowIndex][columnIndex]),
-      ),
-    );
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: _grid
-          .map<Widget>(
-            (e) => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: e.map<Widget>((cell) => cell).toList(),
-            ),
-          )
-          .toList(),
-    );
-  }
-
   String getLetter(index) {
     return _letters.elementAt(index);
   }
@@ -205,7 +189,6 @@ class WordSearchActivityState extends State<WordSearchActivity> {
           child: CustomPaint(
             size: Size.infinite,
             foregroundPainter: LinePainter(lineStart, lineEnd),
-            // child: _buildWordGrid(context, letterGrid),
             child: SizedBox(
               width: 640,
               height: 640,
