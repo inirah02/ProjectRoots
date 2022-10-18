@@ -34,7 +34,7 @@ class Answer extends StatelessWidget {
                 ),
               )
             : Image.asset(
-                'assets/images/1.jpg',
+                'assets/images/${answerText}',
               ),
       ),
     );

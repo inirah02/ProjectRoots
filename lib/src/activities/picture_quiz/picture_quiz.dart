@@ -8,7 +8,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Icon> _scoreTracker = [];
-  int _questionIndex = 0;
+  int _questionIndex = 7;
   int _totalScore = 0;
   bool answerWasSelected = false;
   bool endOfQuiz = false;
@@ -212,66 +212,65 @@ final _questions = const [
   {
     'question': 'Which of the following is your house?',
     'answers': [
-      {'answerImage': '1.png', 'score': false},
-      {'answerImage': '2.png', 'score': false},
-      {'answerImage': '3.png', 'score': true},
+      {'answerImage': '1.jpg', 'score': false},
+      {'answerImage': '2.jpg', 'score': false},
+      {'answerImage': '3.jpg', 'score': true},
     ],
   },
   {
     'question': 'Which of the following is your mobile phone?',
     'answers': [
-      {'answerImage': 'phone1', 'score': false},
-      {'answerImage': 'phone2', 'score': false},
-      {'answerImage': 'phone3', 'score': true},
+      {'answerImage': 'phone2.jpg', 'score': false},
+      {'answerImage': 'phone3.jpg', 'score': false},
+      {'answerImage': 'phone4.jpg', 'score': true},
     ],
   },
   {
     'question': 'Who is your spouse?',
     'answers': [
-      {'answerText': 'sample1', 'score': false},
-      {'answerText': 'sample2', 'score': true},
-      {'answerText': 'sample3', 'score': false},
+      {'answerImage': 'spouse1.jpg', 'score': false},
+      {'answerImage': 'spouse2.jpg', 'score': true},
+      {'answerImage': 'spouse3.jpg', 'score': false},
     ],
   },
   {
-    'question':
-        'Which part of his body did musician Gene Simmons from Kiss insure for one million dollars?',
+    'question': 'Which city do you currently reside in?',
     'answers': [
-      {'answerText': 'His tongue', 'score': true},
-      {'answerText': 'His leg', 'score': false},
-      {'answerText': 'His butt', 'score': false},
+      {'answerText': 'Bangalore', 'score': true},
+      {'answerText': 'Delhi', 'score': false},
+      {'answerText': 'Mumbai', 'score': false},
     ],
   },
   {
-    'question': 'In which country are Panama hats made?',
+    'question': 'What is your current age?',
     'answers': [
-      {'answerText': 'Ecuador', 'score': true},
-      {'answerText': 'Panama (duh)', 'score': false},
-      {'answerText': 'Portugal', 'score': false},
+      {'answerText': '60', 'score': true},
+      {'answerText': '67', 'score': false},
+      {'answerText': '78', 'score': false},
     ],
   },
   {
-    'question': 'From which country do French fries originate?',
+    'question': 'Who is your son?',
     'answers': [
-      {'answerText': 'Belgium', 'score': true},
-      {'answerText': 'France (duh)', 'score': false},
-      {'answerText': 'Switzerland', 'score': false},
+      {'answerImage': 'son1.jpg', 'score': true},
+      {'answerImage': 'son2.jpg', 'score': false},
+      {'answerImage': 'son3.jpg', 'score': false},
     ],
   },
   {
-    'question': 'Which sea creature has three hearts?',
+    'question': 'Which is your favorite dish?',
     'answers': [
-      {'answerText': 'Great White Sharks', 'score': false},
-      {'answerText': 'Killer Whales', 'score': false},
-      {'answerText': 'The Octopus', 'score': true},
+      {'answerImage': 'food1.jpg', 'score': false},
+      {'answerImage': 'food2.jpg', 'score': false},
+      {'answerImage': 'good3.jpg', 'score': true},
     ],
   },
   {
-    'question': 'Which European country eats the most chocolate per capita?',
+    'question': 'Which of the following is your emergency hospital?',
     'answers': [
-      {'answerText': 'Belgium', 'score': false},
-      {'answerText': 'The Netherlands', 'score': false},
-      {'answerText': 'Switzerland', 'score': true},
+      {'answerImage': 'hos1.jpg', 'score': false},
+      {'answerImage': 'hos2.jpg', 'score': false},
+      {'answerImage': 'hos3.jpg', 'score': true},
     ],
   },
 ];
