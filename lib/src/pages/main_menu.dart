@@ -9,12 +9,12 @@ class MainMenu extends ConsumerWidget {
 
 
   _navigateToScreen(context, path) {
-    Navigator.of(context).push(path);
+    Navigator.of(context).pushNamed(path);
   }
 
   Widget _buildMainMenuForUser(context) {
     print("Building Menu for profile type");
-    switch (user['profileType']) {
+    switch (user['profile_type']) {
       case 1:
         return Text("Care Giver Menu");
       case 2:
