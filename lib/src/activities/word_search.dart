@@ -71,21 +71,21 @@ class WordSearchActivityState extends State<WordSearchActivity> {
           Axis.values.elementAt(random.nextInt(Axis.values.length));
 
       final wordAsList = word.split(''); 
-      final origin = getWordOrigin(word, wordDirection);
+      final origin = getWordOrigin(word, Axis.vertical);
       int startX = origin[0];
       int startY = origin[1];
       print("$startX, $startY");
 
       for (int i = 0; i < word.length; i++) {
-        gridLetters[(gridSize * startY) + (startX + i)] =
+        
+
+        if (wordDirection == Axis.horizontal) {
+          gridLetters[(gridSize * startY) + (startX + i)] =
             wordAsList.elementAt(i).toUpperCase();
-        // if (wordDirection == Axis.horizontal) {
-        //   letterGrid[startX + i][startY] =
-        //       wordAsList.elementAt(i).toUpperCase();
-        // } else {
-        //   letterGrid[startX][startY + i] =
-        //       wordAsList.elementAt(i).toUpperCase();
-        // }
+        } else {
+          gridLetters[(gridSize * (startY + i)) + (startX)] =
+            wordAsList.elementAt(i).toUpperCase();
+        }
       }
       solutions[word] = [startX,startY];
     }
@@ -101,19 +101,16 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   }
 
   List<int> getWordOrigin(String word, Axis direction) {
-    final x = random.nextInt(gridSize - word.length);
-    final y = random.nextInt(gridSize);
-    return [x, y];
-    // if (direction == Axis.horizontal) {
-    //   return [
-    //     random.nextInt(letterGrid.length - word.length),
-    //     random.nextInt(letterGrid.length),
-    //   ];
-    // }
-    // return [
-    //   random.nextInt(letterGrid.length),
-    //   random.nextInt(letterGrid.length - word.length),
-    // ];
+    if (direction == Axis.horizontal) {
+      return [
+        random.nextInt(gridSize - word.length),
+        random.nextInt(gridSize),
+      ];
+    }
+    return [
+      random.nextInt(gridSize),
+      random.nextInt(gridSize-word.length),
+    ];
   }
 
   void _startLine(details) {
