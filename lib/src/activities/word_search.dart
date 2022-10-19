@@ -40,38 +40,29 @@ class WordSearchActivity extends StatefulWidget {
 }
 
 class WordSearchActivityState extends State<WordSearchActivity> {
-  Map<String, List<int>> solutions = {};
-  Set<List<int>> selection = {};
-  late final List<List<String>> letterGrid = [];
   final random = Random();
+  // Global key used to identify the grid in the widget tree
+  final GlobalKey _wordGridKey = GlobalKey();
+  // For the Line Painter
   Offset lineStart = Offset.zero;
   Offset lineEnd = Offset.zero;
-  final GlobalKey _wordGridKey = GlobalKey();
-  late final List<List<LocalKey>> gridCellKeys = [];
-  final List<String> _letters = [];
+  
+  Map<String, List<int>> solutions = {};
+  // Grid Variables
   final int gridSize = 10;
-  final Set<GridCellRenderObject> selectedCells = {};
+  final List<String> gridLetters = [];
+  // Selection and Activation on interaction
   final List<int> selectedCellIndexes = [];
   final Set<GridCellRenderObject> activeCells = {};
   final List<int> activeCellIndexes = [];
+  // Test words
   final targetWords = ["rohan", "monica"];
+  
+  int get gridArea => gridSize * gridSize;
 
   @override
   void initState() {
-    // Generate Letter Grid
-    for (var i = 0; i <= 10; i++) {
-      List<String> row = [];
-      for (var j = 0; j <= 10; j++) {
-        // row.insert(j, letters.elementAt(random.nextInt(letters.length)));
-        row.insert(j, "*");
-      }
-      letterGrid.insert(i, row);
-    }
-
-    for (var i = 0; i < (gridSize * gridSize); i++) {
-      _letters.insert(i,"*");
-      // _letters.insert(i, letters.elementAt(random.nextInt(letters.length)));
-    }
+    generateLetterGrid();
 
     // TODO: Refactor to avoid collisions on origin values;
     for (final word in targetWords) {
@@ -79,14 +70,15 @@ class WordSearchActivityState extends State<WordSearchActivity> {
       Axis wordDirection =
           Axis.values.elementAt(random.nextInt(Axis.values.length));
 
-      final wordAsList = word.split('');
+      final wordAsList = word.split(''); 
       final origin = getWordOrigin(word, wordDirection);
       int startX = origin[0];
       int startY = origin[1];
       print("$startX, $startY");
 
       for (int i = 0; i < word.length; i++) {
-        _letters[(gridSize * startY) + (startX + i)] = wordAsList.elementAt(i).toUpperCase();
+        gridLetters[(gridSize * startY) + (startX + i)] =
+            wordAsList.elementAt(i).toUpperCase();
         // if (wordDirection == Axis.horizontal) {
         //   letterGrid[startX + i][startY] =
         //       wordAsList.elementAt(i).toUpperCase();
@@ -95,18 +87,23 @@ class WordSearchActivityState extends State<WordSearchActivity> {
         //       wordAsList.elementAt(i).toUpperCase();
         // }
       }
-      solutions[word] = [startX];
+      solutions[word] = [startX,startY];
     }
 
     super.initState();
   }
 
+  void generateLetterGrid() {
+    for (var i = 0; i < gridArea; i++) {
+      gridLetters.insert(i, "*");
+      // gridLetters.insert(i, letters.elementAt(random.nextInt(letters.length)));
+    }
+  }
+
   List<int> getWordOrigin(String word, Axis direction) {
     final x = random.nextInt(gridSize - word.length);
     final y = random.nextInt(gridSize);
-    return [
-      x,y
-    ];
+    return [x, y];
     // if (direction == Axis.horizontal) {
     //   return [
     //     random.nextInt(letterGrid.length - word.length),
@@ -136,16 +133,17 @@ class WordSearchActivityState extends State<WordSearchActivity> {
       lineStart = Offset.zero;
       lineEnd = Offset.zero;
     });
-    String selectedWord = _letters.getRange(activeCellIndexes.first, activeCellIndexes.last + 1).join();
 
+    String selectedWord = activeCellIndexes.map((i) => gridLetters.elementAt(i)).join("");
+    
     for (final word in targetWords) {
-      if(word.toUpperCase() == selectedWord) {
+      if (word.toUpperCase() == selectedWord) {
         setState(() {
           selectedCellIndexes.addAll(activeCellIndexes);
         });
       }
     }
-    
+
     setState(() {
       activeCellIndexes.clear();
       activeCells.clear();
@@ -171,7 +169,7 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   }
 
   String getLetter(index) {
-    return _letters.elementAt(index);
+    return gridLetters.elementAt(index);
   }
 
   @override
@@ -193,9 +191,11 @@ class WordSearchActivityState extends State<WordSearchActivity> {
               width: 640,
               height: 640,
               child: GridView.builder(
-                  itemCount: (gridSize * gridSize),
+                  itemCount: gridArea,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 10, mainAxisExtent: 64),
+                    crossAxisCount: 10,
+                    mainAxisExtent: 64,
+                  ),
                   itemBuilder: (context, index) => GridCell(
                         index: index,
                         child: GridCellContainer(
@@ -240,7 +240,6 @@ class GridCellContainer extends StatelessWidget {
     this.isSelected = false,
     this.isActive = false,
   }) : super(key: key);
-
 
   Color getBackgroundColor(context) {
     if (isSelected) {
