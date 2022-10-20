@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projectroots/src/activities/phone_recall/phone_recall.dart';
 import 'package:projectroots/src/activities/picture_quiz/picture_quiz.dart';
 import 'package:projectroots/src/activities/reverse_spell.dart';
+import 'package:projectroots/src/patient_screen/patient_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

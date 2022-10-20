@@ -102,24 +102,21 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     if (isStarted) {
       return _buildActiviyWidget(context);
     }
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 185, 116, 177),
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Text('Reverse Spell'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: _speakWord,
-            child: const Text(
-              'Start Game',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color.fromARGB(255, 235, 143, 15),
-                fontSize: 70,
-              ),
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 185, 116, 177),
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text('Reverse Spell'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: _speakWord,
+          child: const Text(
+            'Start Game',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Color.fromARGB(255, 235, 143, 15),
+              fontSize: 70,
             ),
           ),
         ),
