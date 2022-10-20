@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'todo_schema.dart';
-import 'todo_item.dart';
+import 'reminders_schema.dart';
+import 'reminders_item.dart';
 
 class TodoActivity extends StatefulWidget {
   TodoActivity({Key? key}) : super(key: key);
