@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class PhoneRecallActivity extends StatefulWidget {
+  static const path = '/phone-recall';
+  static const name = 'Phone Recall';
   const PhoneRecallActivity({
     super.key,
   });

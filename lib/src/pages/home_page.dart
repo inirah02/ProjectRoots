@@ -24,7 +24,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // return LoginPage();
     final user = ref.watch(authStateChangesProvider);
     final db = ref.read(firestoreProvider);
     return Scaffold(
@@ -38,7 +37,6 @@ class HomePage extends ConsumerWidget {
               future: db.collection('users').doc(data.uid).get(), 
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  // return Text(snapshot.data!.data().toString());
                   return MainMenu(snapshot.data!.data()!);
                 }
                 if (snapshot.hasError) {

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:projectroots/src/activities/reverse_spell.dart';
-import 'package:projectroots/src/reminders_activity/todo.dart';
+import 'package:projectroots/activities.dart';
 
 final Color blue = Color.fromARGB(255, 97, 199, 227);
 
 class PatientScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: blue),
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Theme(
+        data: ThemeData.dark().copyWith(scaffoldBackgroundColor: blue),
+        child: Scaffold(
           body: Center(
             child: Container(
               height: 900.0,
@@ -21,16 +19,17 @@ class PatientScreen extends StatelessWidget {
                     Center(
                         child: const Text("What would you like to do today")),
                     ElevatedButton(
-                      
-                      onPressed:TodoActivity(),
+                      onPressed: () => TodoActivity(),
                       child: const Text("To-do Reminders"),
                     ),
                     ElevatedButton(
-                      onPressed: (){},
+                      onPressed: () {},
                       child: const Text("Word Search"),
                     ),
                     ElevatedButton(
-                      onPressed:  ReverseSpellActivity(targetWord: "Varuni",),
+                      onPressed: () => ReverseSpellActivity(
+                        targetWord: "Varuni",
+                      ),
                       child: const Text("Reverse Spell"),
                     ),
                     ElevatedButton(
@@ -42,7 +41,4 @@ class PatientScreen extends StatelessWidget {
           ),
         ));
   }
-
-   
-  }
-
+}

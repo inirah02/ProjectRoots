@@ -15,7 +15,11 @@ class App extends StatelessWidget {
       theme: projectRootsThemeData,
       routes: {
         HomePage.path: (context) => HomePage(),
-        ReverseSpellActivity.path: (context) => ReverseSpellActivity(targetWord: 'targetWord')
+        PhoneRecallActivity.path:(context) => PhoneRecallActivity(),
+        PictureQuizActivity.path:(context) => PictureQuizActivity(),
+        TodoActivity.path:(context) => TodoActivity(),
+        ReverseSpellActivity.path: (context) => ReverseSpellActivity(targetWord: 'targetWord'),
+        WordSearchActivity.path: (context) => WordSearchActivity(),
       },
     );
   }

@@ -3,6 +3,8 @@ import 'reminders_schema.dart';
 import 'reminders_item.dart';
 
 class TodoActivity extends StatefulWidget {
+  static const path = '/todo';
+  static const name = 'To-Do';
   TodoActivity({Key? key}) : super(key: key);
 
   @override

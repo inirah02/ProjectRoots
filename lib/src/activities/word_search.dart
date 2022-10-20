@@ -33,6 +33,9 @@ const letters = [
 ];
 
 class WordSearchActivity extends StatefulWidget {
+  static const path = '/word-search';
+  static const name = 'Word Search';
+  
   const WordSearchActivity({Key? key}) : super(key: key);
 
   @override

@@ -3,34 +3,94 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projectroots/activities.dart';
 
 class MainMenu extends ConsumerWidget {
-  final Map<String,dynamic> user;
-  const MainMenu(this.user,{super.key});
+  final Map<String, dynamic> user;
+  const MainMenu(this.user, {super.key});
 
   _navigateToScreen(context, path) {
     Navigator.of(context).pushNamed(path);
   }
 
-  Widget _buildMainMenuForUser(context) {
-    print("Building Menu for profile type");
+  List<Widget> _getMenuItemsForUser(context, user) {
     switch (user['profile_type']) {
       case 1:
-        return Text("Care Giver Menu");
+        return [
+          ElevatedButton(
+            onPressed: () =>
+                _navigateToScreen(context, ReverseSpellActivity.path),
+            child: Text('ToDo'),
+          ),
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, '/'),
+            child: Text('Word Search'),
+          ),
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, '/'),
+            child: Text('Reverse Spell'),
+          ),
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, '/'),
+            child: Text('Picture Quiz'),
+          ),
+        ];
       case 2:
-        return Text("Doctor Menu");
+        return [
+          ElevatedButton(
+            onPressed: () =>
+                _navigateToScreen(context, ReverseSpellActivity.path),
+            child: Text('ToDo'),
+          ),
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, '/'),
+            child: Text('Word Search'),
+          ),
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, '/'),
+            child: Text('Reverse Spell'),
+          ),
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, '/'),
+            child: Text('Picture Quiz'),
+          ),
+        ];
       default:
-        return Column(
-          children: [
-            ElevatedButton(onPressed: () => _navigateToScreen(context, ReverseSpellActivity.path), child: Text('ToDo'),),
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/'), child: Text('Word Search'),),
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/'), child: Text('Reverse Spell'),),
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/'), child: Text('Picture Quiz'),),
-          ],
-        );
+        return [
+          ElevatedButton(
+            onPressed: () => _navigateToScreen(context, TodoActivity.path),
+            child: const Text(TodoActivity.name),
+          ),
+          ElevatedButton(
+            onPressed: () =>
+                _navigateToScreen(context, ReverseSpellActivity.path),
+            child: const Text(ReverseSpellActivity.name),
+          ),
+          ElevatedButton(
+            onPressed: () =>
+                _navigateToScreen(context, WordSearchActivity.path),
+            child: const Text(WordSearchActivity.name),
+          ),
+          ElevatedButton(
+            onPressed: () =>
+                _navigateToScreen(context, PictureQuizActivity.path),
+            child: const Text(PictureQuizActivity.name),
+          ),
+          ElevatedButton(
+            onPressed: () =>
+                _navigateToScreen(context, PhoneRecallActivity.path),
+            child: const Text(PhoneRecallActivity.name),
+          ),
+        ];
     }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return _buildMainMenuForUser(context);
+    List<Widget> children = _getMenuItemsForUser(context, user);
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children,
+      ),
+    );
   }
 }
