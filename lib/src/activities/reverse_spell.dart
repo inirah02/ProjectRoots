@@ -3,6 +3,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:projectroots/src/extensions/string.dart';
 
 class ReverseSpellActivity extends StatefulWidget {
+  static const path = '/reverse_spelling';
   final String targetWord;
 
   const ReverseSpellActivity({

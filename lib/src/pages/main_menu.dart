@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:projectroots/activities.dart';
 
 class MainMenu extends ConsumerWidget {
   final Map<String,dynamic> user;
   const MainMenu(this.user,{super.key});
-
 
   _navigateToScreen(context, path) {
     Navigator.of(context).pushNamed(path);
@@ -22,10 +20,10 @@ class MainMenu extends ConsumerWidget {
       default:
         return Column(
           children: [
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/reverse_spell'), child: Text('ToDo'),),
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/reverse_spell'), child: Text('Word Search'),),
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/reverse_spell'), child: Text('Reverse Spell'),),
-            ElevatedButton(onPressed: () => _navigateToScreen(context, '/reverse_spell'), child: Text('Picture Quiz'),),
+            ElevatedButton(onPressed: () => _navigateToScreen(context, ReverseSpellActivity.path), child: Text('ToDo'),),
+            ElevatedButton(onPressed: () => _navigateToScreen(context, '/'), child: Text('Word Search'),),
+            ElevatedButton(onPressed: () => _navigateToScreen(context, '/'), child: Text('Reverse Spell'),),
+            ElevatedButton(onPressed: () => _navigateToScreen(context, '/'), child: Text('Picture Quiz'),),
           ],
         );
     }

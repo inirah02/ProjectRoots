@@ -19,6 +19,7 @@ final authStateChangesProvider = StreamProvider<User?>(
   // if user is logged-in show main-menu
   // if user is not logged-in show login screen
 class HomePage extends ConsumerWidget {
+  static const path = '/';
   const HomePage({super.key});
 
   @override
@@ -51,29 +52,5 @@ class HomePage extends ConsumerWidget {
         )
       ),
     );
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text('Home Page'),
-    //   ),
-    //   body: Center(
-    //     child: Container(
-    //       height: 80,
-    //       width: 150,
-    //       decoration: BoxDecoration(
-    //         color: Colors.blue,
-    //         borderRadius: BorderRadius.circular(10),
-    //       ),
-    //       child: ElevatedButton(
-    //         onPressed: () {
-    //           Navigator.pop(context);
-    //         },
-    //         child: Text(
-    //           'Welcome',
-    //           style: TextStyle(color: Colors.white, fontSize: 25),
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }

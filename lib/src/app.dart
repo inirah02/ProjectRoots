@@ -14,8 +14,8 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       theme: projectRootsThemeData,
       routes: {
-        '/': (context) => HomePage(),
-        '/reverse_spell': (context) => ReverseSpellActivity(targetWord: 'targetWord')
+        HomePage.path: (context) => HomePage(),
+        ReverseSpellActivity.path: (context) => ReverseSpellActivity(targetWord: 'targetWord')
       },
     );
   }
