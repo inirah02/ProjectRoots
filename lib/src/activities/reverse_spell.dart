@@ -100,7 +100,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     // repeat word button to repeat word
     // success/failure
     if (isStarted) {
-      return _buildActiviyWidget(context);
+      return Material(child: _buildActiviyWidget(context));
     }
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 185, 116, 177),

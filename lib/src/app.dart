@@ -1,14 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
+import 'package:projectroots/pages.dart';
 import 'package:projectroots/src/activities/phone_recall/phone_recall.dart';
 import 'package:projectroots/src/activities/picture_quiz/picture_quiz.dart';
 import 'package:projectroots/src/activities/reverse_spell.dart';
 import 'package:projectroots/src/patient_screen/patient_screen.dart';
+import 'package:projectroots/src/reminders_activity/todo.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
           border: OutlineInputBorder(),
         ),
       ),
-      home: Scaffold(
-        body: PhoneRecallActivity(),
-      ),
+      routes: {
+        '/': (context) => HomePage(),
+        '/reverse_spell': (context) => ReverseSpellActivity(targetWord: 'targetWord')
+      },
     );
   }
 }
