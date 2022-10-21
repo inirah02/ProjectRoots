@@ -36,19 +36,19 @@ class MainMenu extends ConsumerWidget {
         return [
           ElevatedButton(
             onPressed: () =>
-                _navigateToScreen(context, ReverseSpellActivity.path),
+                _navigateToScreen(context, TodoActivity.path),
             child: Text('ToDo'),
           ),
           ElevatedButton(
-            onPressed: () => _navigateToScreen(context, '/'),
+            onPressed: () => _navigateToScreen(context,WordSearchActivity.path ),
             child: Text('Word Search'),
           ),
           ElevatedButton(
-            onPressed: () => _navigateToScreen(context, '/'),
+            onPressed: () => _navigateToScreen(context, ReverseSpellActivity.path),
             child: Text('Reverse Spell'),
           ),
           ElevatedButton(
-            onPressed: () => _navigateToScreen(context, '/'),
+            onPressed: () => _navigateToScreen(context, PictureQuizActivity.path),
             child: Text('Picture Quiz'),
           ),
         ];
@@ -94,3 +94,4 @@ class MainMenu extends ConsumerWidget {
     );
   }
 }
+

@@ -18,6 +18,22 @@ final authStateChangesProvider = StreamProvider<User?>(
   // TODO: Check if user is logged-in,
   // if user is logged-in show main-menu
   // if user is not logged-in show login screen
+  //Once logged in show respective main menus wrt to the profile type
+  // patient main menu:
+  //1)Todo 
+  //2)Reverse Spell
+  //3)Word Search
+  //* hints page for wordsearch
+  //4)Picture Quiz
+  // caregiver main menu:
+  // 1)add todo reminders
+// 2) modify medicine list
+// 3)check vitals of patient ?
+//Doctor main menu
+//1)medications 
+// 2)game stats?
+//patient history
+
 class HomePage extends ConsumerWidget {
   static const path = '/';
   const HomePage({super.key});
