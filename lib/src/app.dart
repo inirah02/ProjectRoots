@@ -1,22 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:projectroots/src/activities/picture_quiz/picture_quiz.dart';
-import 'package:projectroots/src/activities/reverse_spell.dart';
+import 'package:projectroots/pages.dart';
+import 'package:projectroots/activities.dart';
+import 'package:projectroots/theme.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
+class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: Scaffold(
-        body: Home(),
-      ),
+      theme: projectRootsThemeData,
+      routes: {
+        HomePage.path: (context) => HomePage(),
+        PhoneRecallActivity.path:(context) => PhoneRecallActivity(),
+        PictureQuizActivity.path:(context) => PictureQuizActivity(),
+        TodoActivity.path:(context) => TodoActivity(),
+        ReverseSpellActivity.path: (context) => ReverseSpellActivity(targetWord: 'targetWord'),
+        WordSearchActivity.path: (context) => WordSearchActivity(),
+      },
     );
   }
 }

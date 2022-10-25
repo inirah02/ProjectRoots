@@ -29,9 +29,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: ^3.5.1
   firebase_auth: ^3.11.2
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.0.2
   flutter_tts: ^3.5.3
   
 
@@ -79,6 +81,7 @@ flutter:
     - assets/images/phone4.jpg
     - assets/images/phone2.jpg
     - assets/images/phone3.jpg
+    
     
    
 

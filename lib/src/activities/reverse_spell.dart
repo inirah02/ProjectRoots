@@ -3,6 +3,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:projectroots/src/extensions/string.dart';
 
 class ReverseSpellActivity extends StatefulWidget {
+  static const path = '/reverse_spelling';
+  static const name = 'Reverse Spell';
   final String targetWord;
 
   const ReverseSpellActivity({
@@ -100,26 +102,23 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     // repeat word button to repeat word
     // success/failure
     if (isStarted) {
-      return _buildActiviyWidget(context);
+      return Material(child: _buildActiviyWidget(context));
     }
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 185, 116, 177),
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Text('Reverse Spell'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: _speakWord,
-            child: const Text(
-              'Start Game',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color.fromARGB(255, 235, 143, 15),
-                fontSize: 70,
-              ),
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 185, 116, 177),
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text('Reverse Spell'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: _speakWord,
+          child: const Text(
+            'Start Game',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Color.fromARGB(255, 235, 143, 15),
+              fontSize: 70,
             ),
           ),
         ),

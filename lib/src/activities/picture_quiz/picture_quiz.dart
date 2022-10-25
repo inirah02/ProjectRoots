@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:projectroots/src/activities/picture_quiz/answer.dart';
 
-class Home extends StatefulWidget {
+class PictureQuizActivity extends StatefulWidget {
+  static const path = "/picture-quiz";
+  static const name = "Picture Quiz";
   @override
-  _HomeState createState() => _HomeState();
+  _PictureQuizActivityState createState() => _PictureQuizActivityState();
 }
 
-class _HomeState extends State<Home> {
+class _PictureQuizActivityState extends State<PictureQuizActivity> {
   List<Icon> _scoreTracker = [];
   int _questionIndex = 7;
   int _totalScore = 0;
