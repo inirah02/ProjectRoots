@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projectroots/pages.dart';
 import 'package:projectroots/activities.dart';
+import 'package:projectroots/src/activities/medicine_list/table.dart';
+import 'package:projectroots/src/activities/patient_records.dart';
 import 'package:projectroots/theme.dart';
+import 'dart:math';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -12,13 +15,15 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       theme: projectRootsThemeData,
       routes: {
-        HomePage.path: (context) => HomePage(),
-        PhoneRecallActivity.path: (context) => PhoneRecallActivity(),
+        HomePage.path: (context) => const HomePage(),
+        PhoneRecallActivity.path: (context) => const PhoneRecallActivity(),
         PictureQuizActivity.path: (context) => PictureQuizActivity(),
         TodoActivity.path: (context) => TodoActivity(),
         ReverseSpellActivity.path: (context) =>
-            ReverseSpellActivity(targetWord: 'targetWord'),
-        WordSearchActivity.path: (context) => WordSearchActivity(),
+            const ReverseSpellActivity(targetWord: "Rohan"),
+        WordSearchActivity.path: (context) => const WordSearchActivity(),
+        MedicineList.path: (context) => const MedicineList(),
+        PatientRecords.path: (context) => PatientRecords(),
       },
     );
   }

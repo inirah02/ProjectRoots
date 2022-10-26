@@ -6,7 +6,7 @@ final Color darkGreen = Color.fromARGB(255, 171, 216, 162);
 
 class PatientRecords extends StatelessWidget {
   get patient_picture => null;
-
+  static const path = '/PatientRecords';
   @override
   Widget build(BuildContext context) {
     var center = Center(

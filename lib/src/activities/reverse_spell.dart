@@ -65,7 +65,8 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      //crossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
       children: [
         TextField(
           controller: _textEditingController,
@@ -79,12 +80,21 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               'Submit',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromARGB(255, 181, 114, 185),
+                color: Color.fromARGB(255, 246, 244, 246),
                 fontSize: 25,
               ),
             )),
         Text(result),
-        ElevatedButton(onPressed: _repeat, child: Text("Repeat word")),
+        ElevatedButton(
+            onPressed: _repeat,
+            child: Text(
+              "Repeat word",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color.fromARGB(255, 253, 251, 253),
+                fontSize: 25,
+              ),
+            )),
         const SizedBox(
           height: 45,
         ),

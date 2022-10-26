@@ -2,8 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-import 'hints.dart';
+import '../hints.dart';
 
 const letters = [
   'A',
@@ -61,7 +60,15 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   final Set<GridCellRenderObject> activeCells = {};
   final List<int> activeCellIndexes = [];
   // Test words
-  final targetWords = ["rohan", "monica", "bangalore", "green", "peanuts"];
+  final targetWords = [
+    "varuni",
+    "rohan",
+    "monica",
+    "green",
+    "bangalore",
+    "reshma",
+    "peanuts"
+  ];
 
   int get gridArea => gridSize * gridSize;
 
