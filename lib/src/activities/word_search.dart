@@ -177,7 +177,8 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reverse Search"),
+        backgroundColor: Color(0xFFA4C639),
+        title: Text("Word Search"),
       ),
       body: Center(
         child: GestureDetector(

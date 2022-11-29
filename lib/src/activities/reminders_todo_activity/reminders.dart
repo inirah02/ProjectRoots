@@ -28,7 +28,7 @@ class _HomeState extends State<TodoActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      backgroundColor: Color.fromARGB(255, 173, 239, 247),
+      backgroundColor: Color.fromARGB(255, 253, 254, 253),
       body: Stack(
         children: [
           Container(
@@ -193,7 +193,7 @@ class _HomeState extends State<TodoActivity> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color.fromARGB(255, 73, 167, 114),
       elevation: 0,
       title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Icon(

@@ -70,7 +70,7 @@ class _PictureQuizActivityState extends State<PictureQuizActivity> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Project Roots Picture Quiz',
+            'Picture Quiz',
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
@@ -96,7 +96,7 @@ class _PictureQuizActivityState extends State<PictureQuizActivity> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                   decoration: BoxDecoration(
-                    color: Colors.deepOrange,
+                    color: Color.fromARGB(255, 128, 125, 125),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Center(

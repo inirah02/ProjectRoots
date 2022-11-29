@@ -63,43 +63,48 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
       result = "Try again";
       flutterTts.speak("Lets give it another try");
     }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      //crossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
-      children: [
-        TextField(
-          controller: _textEditingController,
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFFA4C639),
+          title: Text('Reverse Spell'),
         ),
-        const SizedBox(
-          height: 45,
-        ),
-        ElevatedButton(
-            onPressed: _onEvaluateAnswer,
-            child: const Text(
-              'Submit',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color.fromARGB(255, 246, 244, 246),
-                fontSize: 25,
-              ),
-            )),
-        Text(result),
-        ElevatedButton(
-            onPressed: _repeat,
-            child: Text(
-              "Repeat word",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color.fromARGB(255, 253, 251, 253),
-                fontSize: 25,
-              ),
-            )),
-        const SizedBox(
-          height: 45,
-        ),
-      ],
-    );
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          //crossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _textEditingController,
+            ),
+            const SizedBox(
+              height: 45,
+            ),
+            ElevatedButton(
+                onPressed: _onEvaluateAnswer,
+                child: const Text(
+                  'Submit',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 246, 244, 246),
+                    fontSize: 25,
+                  ),
+                )),
+            Text(result),
+            OutlinedButton(
+                onPressed: _repeat,
+                child: Text(
+                  "Repeat word",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 16, 15, 16),
+                    fontSize: 25,
+                  ),
+                )),
+            const SizedBox(
+              height: 45,
+            ),
+          ],
+        ));
   }
 
   @override
@@ -115,24 +120,28 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
       return Material(child: _buildActiviyWidget(context));
     }
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 185, 116, 177),
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Reverse Spell'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: _speakWord,
-          child: const Text(
-            'Start Game',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color.fromARGB(255, 235, 143, 15),
-              fontSize: 70,
+        backgroundColor: Colors.white10,
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          backgroundColor: Color(0xFFA4C639),
+          title: Text('Reverse Spell'),
+        ),
+        body: Center(
+          child: SizedBox(
+            height: 100,
+            width: 300,
+            child: ElevatedButton(
+              onPressed: _speakWord,
+              child: const Text(
+                'Start Game',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 124, 124, 123),
+                  fontSize: 40,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
