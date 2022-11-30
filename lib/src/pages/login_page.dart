@@ -26,121 +26,88 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
-          children: <Widget>[
-            Container(
-                child: Center(
-              heightFactor: 2,
-              // alignment: Alignment.center,
-              // padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                'assets/images/roots_icon.jpeg',
-                height: 150,
-                width: 100,
-              ),
-              // height: 25,
-              // width: 25,
+    return ListView(
+      children: <Widget>[
+        Container(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Center(
+
+          // alignment: Alignment.cente
+          // padding: const EdgeInsets.all(10),
+          child: Image.asset(
+              'assets/images/roots_icon.jpeg',
+              height: 250,
+
+          ),
+        ),
             )),
+        SizedBox(height: 150),
 
-            // Container(
-            //   padding: const EdgeInsets.all(10),
-            //   child: TextField(
-            //     decoration: const InputDecoration(
-            //       border: OutlineInputBorder(),
-            //       labelText: 'User Name',
-            //     ),
-            //   ),
-            // ),
-            Container(
-                padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
-                child: Text("Connected to you and yours",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 65, 141, 104),
-                        fontSize: 20))),
+        Container(
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            child: Text("Helping Those Tho Help Us The Most",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 65, 141, 104),
+                    fontSize: 20))),
 
-            // TextButton(
-            //   onPressed: () {
-            //     //forgot password screen
-            //   },
-            //   child: const Text(
-            //     'Forgot Password',
-            //   ),
-            // ),
-            //     Container(
-            //     child:Center(
-            //   heightFactor: 1.5,
-            //   child: Text('Connected to you and your\'s',
-            //       style: TextStyle(color: Colors.white)),
-            // ),
-            // Container(
-            //     height: 50,
-            //     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-            //     child: ElevatedButton(
-            //       child: const Text('Login'),
-            //       onPressed: () {},
-            //     )),
-            Container(
-                child: Center(
-                    heightFactor: 1.5,
-                    child: ButtonTheme(
-                        minWidth: 600.0,
-                        height: 100.0,
-                        child: ElevatedButton(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(fontStyle: FontStyle.normal),
-                          ),
-                          onPressed: () async {
-                            final credential = await signInWithGoogle();
-                            print(credential.user?.uid);
-                            print(credential.user?.email);
-                          },
-                          style: ElevatedButton.styleFrom(
-                              primary: Color.fromARGB(255, 10, 10, 10),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5, vertical: 20),
-                              textStyle: TextStyle(
-                                  fontSize: 30, fontWeight: FontWeight.bold)),
-                        )))),
-            // Container(
-            //     child: Row(
-            //   children: <Widget>[
-            //     const Text('Does not have account?'),
-            //     TextButton(
-            //       child: const Text(
-            //         'Sign in',
-            //         style: TextStyle(fontSize: 20),
-            //       ),
-            //       onPressed: () {
-            //         //signup screen
-            //       },
-            //     )
-            //   ],
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            // )),
-            Container(
-                child: Center(
-                    heightFactor: 1.5,
-                    child: ButtonTheme(
-                        minWidth: 200.0,
-                        height: 10.0,
-                        child: ElevatedButton(
-                          child: Text(
-                            "Sign Up",
-                            style: TextStyle(fontStyle: FontStyle.normal),
-                          ),
-                          onPressed: () async {},
-                          style: ElevatedButton.styleFrom(
-                              primary: Color.fromARGB(255, 10, 10, 10),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 50, vertical: 20),
-                              textStyle: TextStyle(
-                                  fontSize: 30, fontWeight: FontWeight.bold)),
-                        )))),
-          ],
-        ));
+        SizedBox(height: 40),
+        Container(
+            child: Center(
+                // heightFactor: 1.5,
+                child: ElevatedButton(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(fontStyle: FontStyle.normal),
+                  ),
+                  onPressed: () async {
+                    final credential = await signInWithGoogle();
+                    print(credential.user?.uid);
+                    print(credential.user?.email);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(300, 69),
+                      backgroundColor: Color.fromARGB(255, 10, 10, 10),
+                      // padding: EdgeInsets.symmetric(
+                      //     horizontal: 50, vertical: 20),
+                      textStyle: TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                ))),
+        // Container(
+        //     child: Row(
+        //   children: <Widget>[
+        //     const Text('Does not have account?'),
+        //     TextButton(
+        //       child: const Text(
+        //         'Sign in',
+        //         style: TextStyle(fontSize: 20),
+        //       ),
+        //       onPressed: () {
+        //         //signup screen
+        //       },
+        //     )
+        //   ],
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        // )),
+        Container(
+            child: Center(
+                heightFactor: 1.5,
+                child: ElevatedButton(
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(fontStyle: FontStyle.normal),
+                  ),
+                  onPressed: () async {},
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(300, 69),
+                      backgroundColor: Color.fromARGB(255, 10, 10, 10),
+                      // padding: EdgeInsets.symmetric(
+                      //     horizontal: 50, vertical: 20),
+                      textStyle: TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                ))),
+      ],
+    );
   }
 }
