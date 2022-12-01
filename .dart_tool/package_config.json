@@ -62,6 +62,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "confetti",
+      "rootUri": "file:///opt/homebrew/Caskroom/flutter/3.3.2/flutter/.pub-cache/hosted/pub.dartlang.org/confetti-0.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "convert",
       "rootUri": "file:///opt/homebrew/Caskroom/flutter/3.3.2/flutter/.pub-cache/hosted/pub.dartlang.org/convert-3.1.1",
       "packageUri": "lib/",
@@ -320,7 +326,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-01T13:40:17.701411Z",
+  "generated": "2022-12-01T16:33:40.399631Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

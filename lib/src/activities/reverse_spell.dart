@@ -1,6 +1,8 @@
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:projectroots/src/extensions/string.dart';
+import 'dart:async';
 
 class ReverseSpellActivity extends StatefulWidget {
   static const path = '/reverse_spelling';
@@ -55,6 +57,17 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
   }
 
   Widget _buildActiviyWidget(BuildContext context) {
+    final confettiController = ConfettiController();
+    
+
+
+    @override
+    void dispose() {
+      confettiController.dispose();
+      super.dispose();
+    }
+
+    @override
     String result = "";
     if (correctAns != null && correctAns!) {
       result = "Correct!";
@@ -64,47 +77,102 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
       flutterTts.speak("Lets give it another try");
     }
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFFA4C639),
-          title: Text('Reverse Spell'),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(116, 152, 87, 1),
+        title: Text('Reverse Spell'),
+      ),
+      body: Container(
+        constraints: const BoxConstraints(
+            maxHeight: double.infinity,
+            maxWidth: double.infinity,
+            minHeight: double.infinity,
+            minWidth: double.infinity),
+        decoration: BoxDecoration(
+          color: Color(0xfffffde8),
+          image: DecorationImage(
+            image: AssetImage("assets/images/patient_main_menu_bg.jpg"),
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.2), BlendMode.dstATop),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: Column(
+        height: 1000.0,
+        padding: const EdgeInsets.symmetric(vertical: 100.0),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           //crossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
           children: [
-            TextField(
-              controller: _textEditingController,
+            ConfettiWidget(
+              confettiController: confettiController,
+              shouldLoop: true,
+              blastDirectionality: BlastDirectionality.explosive,
+              numberOfParticles: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: TextField(
+                controller: _textEditingController,
+              ),
             ),
             const SizedBox(
               height: 45,
             ),
             ElevatedButton(
-                onPressed: _onEvaluateAnswer,
-                child: const Text(
-                  'Submit',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 246, 244, 246),
-                    fontSize: 25,
-                  ),
-                )),
-            Text(result),
-            OutlinedButton(
-                onPressed: _repeat,
-                child: Text(
-                  "Repeat word",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 16, 15, 16),
-                    fontSize: 25,
-                  ),
-                )),
+              onPressed: () {
+                setState(() {
+                  correctAns = _textEditingController.text.toLowerCase() ==
+                      widget.targetWord.reverse().toLowerCase();
+                });
+                
+                if (correctAns!) {
+                  confettiController.play();
+                  Timer(const Duration(seconds: 2), () {
+                    confettiController.stop();
+                  });
+                }
+              },
+              child: const Text(
+                'Submit',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 246, 244, 246),
+                  fontSize: 25,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(300, 40),
+                  primary: Color.fromARGB(255, 10, 10, 10),
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
+            ),
+            SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: _repeat,
+              child: Text(
+                "Repeat word",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(300, 40),
+                  primary: Color.fromARGB(255, 10, 10, 10),
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
+            ),
             const SizedBox(
               height: 45,
             ),
+            Text(result,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(116, 152, 87, 1),
+                )),
           ],
-        ));
+        ),
+      ),
+    );
   }
 
   @override
@@ -119,27 +187,47 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     if (isStarted) {
       return Material(child: _buildActiviyWidget(context));
     }
+
     return Scaffold(
         backgroundColor: Colors.white10,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          backgroundColor: Color(0xFFA4C639),
+          backgroundColor: Color.fromRGBO(116, 152, 87, 1),
           title: Text('Reverse Spell'),
         ),
-        body: Center(
-          child: SizedBox(
-            height: 100,
-            width: 300,
+        body: Container(
+          constraints: const BoxConstraints(
+              maxHeight: double.infinity,
+              maxWidth: double.infinity,
+              minHeight: double.infinity,
+              minWidth: double.infinity),
+          decoration: BoxDecoration(
+            color: Color(0xfffffde8),
+            image: DecorationImage(
+              image: AssetImage("assets/images/patient_main_menu_bg.jpg"),
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              fit: BoxFit.cover,
+            ),
+          ),
+          height: 1000.0,
+          padding: const EdgeInsets.symmetric(vertical: 100.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 280),
             child: ElevatedButton(
               onPressed: _speakWord,
               child: const Text(
                 'Start Game',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 124, 124, 123),
-                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
                 ),
               ),
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(300, 40),
+                  primary: Color.fromARGB(255, 10, 10, 10),
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
           ),
         ));
