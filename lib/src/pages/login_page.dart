@@ -32,25 +32,55 @@ class LoginPage extends StatelessWidget {
             Container(
                 child: Center(
               heightFactor: 2,
-              
+              // alignment: Alignment.center,
+              // padding: const EdgeInsets.all(10),
               child: Image.asset(
                 'assets/images/roots_icon.jpeg',
                 height: 150,
                 width: 100,
               ),
-              
+              // height: 25,
+              // width: 25,
             )),
 
-            
+            // Container(
+            //   padding: const EdgeInsets.all(10),
+            //   child: TextField(
+            //     decoration: const InputDecoration(
+            //       border: OutlineInputBorder(),
+            //       labelText: 'User Name',
+            //     ),
+            //   ),
+            // ),
             Container(
                 padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
-                child: Text("Helping those who helped us the most",
+                child: Text("Connected to you and yours",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color.fromARGB(255, 65, 141, 104),
                         fontSize: 20))),
 
-             
+            // TextButton(
+            //   onPressed: () {
+            //     //forgot password screen
+            //   },
+            //   child: const Text(
+            //     'Forgot Password',
+            //   ),
+            // ),
+            //     Container(
+            //     child:Center(
+            //   heightFactor: 1.5,
+            //   child: Text('Connected to you and your\'s',
+            //       style: TextStyle(color: Colors.white)),
+            // ),
+            // Container(
+            //     height: 50,
+            //     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+            //     child: ElevatedButton(
+            //       child: const Text('Login'),
+            //       onPressed: () {},
+            //     )),
             Container(
                 child: Center(
                     heightFactor: 1.5,
@@ -74,7 +104,22 @@ class LoginPage extends StatelessWidget {
                               textStyle: TextStyle(
                                   fontSize: 30, fontWeight: FontWeight.bold)),
                         )))),
-            
+            // Container(
+            //     child: Row(
+            //   children: <Widget>[
+            //     const Text('Does not have account?'),
+            //     TextButton(
+            //       child: const Text(
+            //         'Sign in',
+            //         style: TextStyle(fontSize: 20),
+            //       ),
+            //       onPressed: () {
+            //         //signup screen
+            //       },
+            //     )
+            //   ],
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            // )),
             Container(
                 child: Center(
                     heightFactor: 1.5,
