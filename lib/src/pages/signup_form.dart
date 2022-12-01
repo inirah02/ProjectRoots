@@ -4,34 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projectroots/src/app.dart';
-import 'firebase_options.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-//   runApp(
-//     const ProviderScope(
-//       child: App(),
-//     ),
-//   )};
-  runApp(new MaterialApp(
-    title: 'Forms in Flutter',
-    home: new LoginPage(),
-  ));
-}
 
 class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _LoginPageState();
-}
-
-late String day;
-late TextEditingController dayTextController;
-void initState() {
-  //super.initState();
-  dayTextController = TextEditingController();
 }
 
 class _LoginData {
@@ -142,8 +118,6 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () async {
                       _fireStore.collection('test').add({
                         'created': Timestamp.now(),
-                        'first_name': this._data.first_name,
-                        'city': this._data.city,
                       });
                     },
 
