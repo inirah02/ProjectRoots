@@ -109,7 +109,11 @@ class MainMenu extends ConsumerWidget {
                           radius: 60,
                           child: ClipOval(
                               child: Image.asset(
-                                "/Users/anuragrao/git_repos/ProjectRoots/assets/images/patient_record.jpg",
+
+                                "assets/images/patient_record.jpg",
+
+                             
+
                                 fit: BoxFit.cover,
                                 ),
                               
@@ -170,7 +174,9 @@ class MainMenu extends ConsumerWidget {
                                       primary: Color.fromARGB(255, 10, 10, 10),
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 50, vertical: 20)),
-                                ))),
+                                ),
+                                ),
+                                ),
                         Center(
                             heightFactor: 1.5,
                             child: ButtonTheme(
@@ -200,7 +206,12 @@ class MainMenu extends ConsumerWidget {
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
-                                    ),``),
+
+                                    ),
+                                    ),
+
+                                    ),),
+
                                     onPressed: () => _navigateToScreen(
                                         context, PictureQuizActivity.path),
                                     style: ElevatedButton.styleFrom(
