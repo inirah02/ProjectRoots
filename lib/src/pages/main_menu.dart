@@ -109,7 +109,11 @@ class MainMenu extends ConsumerWidget {
                           radius: 60,
                           child: ClipOval(
                               child: Image.asset(
+
                                 "assets/images/patient_record.jpg",
+
+                             
+
                                 fit: BoxFit.cover,
                                 ),
                               
@@ -202,8 +206,12 @@ class MainMenu extends ConsumerWidget {
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
+
                                     ),
                                     ),
+
+                                    ),),
+
                                     onPressed: () => _navigateToScreen(
                                         context, PictureQuizActivity.path),
                                     style: ElevatedButton.styleFrom(
