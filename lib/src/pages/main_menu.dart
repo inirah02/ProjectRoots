@@ -28,21 +28,21 @@ class MainMenu extends ConsumerWidget {
             children: [
               ElevatedButton(
                 onPressed: () => _navigateToScreen(context, TodoActivity.path),
-                child: Text('Add ToDo Reminder'),
+                child: const Text('Add ToDo Reminder'),
               ),
               ElevatedButton(
                 onPressed: () => _navigateToScreen(context, MedicineList.path),
-                child: Text('View Medication List'),
+                child: const Text('View Medication List'),
               ),
               ElevatedButton(
                 onPressed: () =>
                     _navigateToScreen(context, ReverseSpellActivity.path),
-                child: Text('Check GPS Location of patient'),
+                child: const Text('Check GPS Location of patient'),
               ),
               ElevatedButton(
                 onPressed: () =>
                     _navigateToScreen(context, PictureQuizActivity.path),
-                child: Text('Check vitals of patient'),
+                child: const Text('Check vitals of patient'),
               ),
             ]);
 
@@ -63,55 +63,21 @@ class MainMenu extends ConsumerWidget {
                   child: Image.asset("assets/images/patient_proflie_pic.png")),
               ElevatedButton(
                 onPressed: () => _navigateToScreen(context, MedicineList.path),
-                child: Text('Medication'),
+                child: const Text('Medication'),
               ),
               ElevatedButton(
                 onPressed: () =>
                     _navigateToScreen(context, WordSearchActivity.path),
-                child: Text('Game Stats'),
+                child: const Text('Game Stats'),
               ),
               ElevatedButton(
                 onPressed: () =>
                     _navigateToScreen(context, PatientRecords.path),
-                child: Text('Patient History'),
+                child: const Text('Patient History'),
               ),
             ]);
       default:
-        // return Wrap(
-        //     direction: Axis.vertical,
-        //     alignment: WrapAlignment.center,
-        //     spacing: 20.0,
-        //     runAlignment: WrapAlignment.center,
-        //     runSpacing: 20.0,
-        //     crossAxisAlignment: WrapCrossAlignment.center,
-        //     textDirection: TextDirection.rtl,
-        //     verticalDirection: VerticalDirection.up,
-        //     children: [
-        //       ElevatedButton(
-        //         onPressed: () => _navigateToScreen(context, TodoActivity.path),
-        //         child: const Text(TodoActivity.name),
-        //       ),
-        //       ElevatedButton(
-        //         onPressed: () =>
-        //             _navigateToScreen(context, ReverseSpellActivity.path),
-        //         child: const Text(ReverseSpellActivity.name),
-        //       ),
-        //       ElevatedButton(
-        //         onPressed: () =>
-        //             _navigateToScreen(context, WordSearchActivity.path),
-        //         child: const Text(WordSearchActivity.name),
-        //       ),
-        //       ElevatedButton(
-        //         onPressed: () =>
-        //             _navigateToScreen(context, PictureQuizActivity.path),
-        //         child: const Text(PictureQuizActivity.name),
-        //       ),
-        //       ElevatedButton(
-        //         onPressed: () =>
-        //             _navigateToScreen(context, PhoneRecallActivity.path),
-        //         child: const Text(PhoneRecallActivity.name),
-        //       ),
-        //     ]);
+        String loggedInUsername = "Grandma Varuni";
         return Theme(
             data: ThemeData.dark()
                 .copyWith(scaffoldBackgroundColor: Colors.greenAccent),
@@ -123,33 +89,48 @@ class MainMenu extends ConsumerWidget {
                     maxWidth: double.infinity,
                     minHeight: double.infinity,
                     minWidth: double.infinity),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Color(0xfffffde8),
                   image: DecorationImage(
                     image: AssetImage("assets/images/patient_main_menu_bg.jpg"),
                     colorFilter: ColorFilter.mode(
-                        Color.fromARGB(255, 213, 210, 210), BlendMode.dstATop),
+                        Colors.black.withOpacity(0.2), BlendMode.dstATop),
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: 900.0,
+                height: 1000.0,
                 padding: const EdgeInsets.symmetric(vertical: 100.0),
                 child: Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        const Center(
+                        CircleAvatar(
+                          radius: 60,
+                          child: ClipOval(
+                              child: Image.asset(
+                                "/Users/anuragrao/git_repos/ProjectRoots/assets/images/patient_record.jpg",
+                                fit: BoxFit.cover,
+                                ),
+                              
+                            ),
+                        ),
+                        
+                        Center(
+                          heightFactor: 1.5,
+                          child: Center(
                             heightFactor: 1.5,
-                            child: Center(
-                                heightFactor: 1.5,
-                                child: Text("What would you like to do today",
-                                    style: TextStyle(
-                                        color: Color.fromARGB(255, 3, 3, 3),
-                                        fontSize: 26,
-                                        fontFamily: 'bold',
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.normal)))),
+                            child: Text(
+                              "Hello, ${loggedInUsername}!",
+                              style: const TextStyle(
+                                  color: Color.fromARGB(255, 63, 57, 57),
+                                  fontSize: 26,
+                                  fontFamily: 'bold',
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
                         Center(
                             heightFactor: 1.5,
                             child: ButtonTheme(
@@ -158,8 +139,15 @@ class MainMenu extends ConsumerWidget {
                                 child: ElevatedButton(
                                   onPressed: () => _navigateToScreen(
                                       context, TodoActivity.path),
-                                  child: const Text("To-do Reminders"),
+                                  child: const Text(
+                                    "To-do Reminders",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                    ),
                                   style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(250, 60),
                                       primary: Color.fromARGB(255, 10, 10, 10),
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 50, vertical: 20)),
@@ -172,8 +160,13 @@ class MainMenu extends ConsumerWidget {
                                 child: ElevatedButton(
                                   onPressed: () => _navigateToScreen(
                                       context, WordSearchActivity.path),
-                                  child: const Text("Word Search"),
+                                  child: const Text("Word Search",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),),
                                   style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(250, 60),
                                       primary: Color.fromARGB(255, 10, 10, 10),
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 50, vertical: 20)),
@@ -186,8 +179,13 @@ class MainMenu extends ConsumerWidget {
                                 child: ElevatedButton(
                                   onPressed: () => _navigateToScreen(
                                       context, ReverseSpellActivity.path),
-                                  child: const Text("Reverse Spell"),
+                                  child: const Text("Reverse Spell",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),),
                                   style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(250, 60),
                                       primary: Color.fromARGB(255, 10, 10, 10),
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 50, vertical: 20)),
@@ -198,10 +196,15 @@ class MainMenu extends ConsumerWidget {
                                 minWidth: 600.0,
                                 height: 170.0,
                                 child: ElevatedButton(
-                                    child: const Text("Picture Quiz"),
+                                    child: const Text("Picture Quiz",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),``),
                                     onPressed: () => _navigateToScreen(
                                         context, PictureQuizActivity.path),
                                     style: ElevatedButton.styleFrom(
+                                        minimumSize: Size(250, 60),
                                         primary:
                                             Color.fromARGB(255, 10, 10, 10),
                                         padding: EdgeInsets.symmetric(
@@ -216,6 +219,6 @@ class MainMenu extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Widget childt = _getMenuItemsForUser(context, user);
-    return Scaffold(appBar: AppBar(title: Text("Main menu")), body: childt);
+    return Scaffold(appBar: AppBar(title: Text("Project Roots")), body: childt);
   }
 }
