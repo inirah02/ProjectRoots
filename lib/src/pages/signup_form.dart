@@ -161,9 +161,11 @@ class _QueryFormPageState extends State<QueryFormPage> {
       //print('name: ${_data.first_name}');
     }
   }
-_navigateToScreen(context, path) {
+
+  _navigateToScreen(context, path) {
     Navigator.of(context).pushNamed(path);
   }
+
   @override
   void dispose() {
     dayTextController.dispose();
@@ -360,9 +362,11 @@ _navigateToScreen(context, path) {
                         'localit_name': locality_name,
                         'fav_food': fav_food,
                         'allergy': allergies,
-                      },
-                      _navigatetoScreen());
+                      });
                     },
+
+                    // THIS DOES NOT WORK AND IDK WHY
+                    // _navigateToScreen());
 
                     // Only if the input form is valid (the user has entered text)
                   ),
