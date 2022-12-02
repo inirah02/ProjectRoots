@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projectroots/src/app.dart';
 
 class QueryFormPage extends StatefulWidget {
-  static var path;
+  static var path = 'projectroots/src/pages/signup_page.dart';
 
   @override
   State<StatefulWidget> createState() => new _QueryFormPageState();
@@ -161,7 +161,9 @@ class _QueryFormPageState extends State<QueryFormPage> {
       //print('name: ${_data.first_name}');
     }
   }
-
+_navigateToScreen(context, path) {
+    Navigator.of(context).pushNamed(path);
+  }
   @override
   void dispose() {
     dayTextController.dispose();
@@ -358,7 +360,8 @@ class _QueryFormPageState extends State<QueryFormPage> {
                         'localit_name': locality_name,
                         'fav_food': fav_food,
                         'allergy': allergies,
-                      });
+                      },
+                      _navigatetoScreen());
                     },
 
                     // Only if the input form is valid (the user has entered text)

@@ -6,12 +6,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projectroots/src/pages/patient_screen.dart';
 
-
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   Future<UserCredential> signInWithGoogle() async {
-    
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
     googleProvider
@@ -20,7 +18,6 @@ class LoginPage extends StatelessWidget {
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithPopup(googleProvider);
- 
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:projectroots/src/activities/medicine_list/table.dart';
 import 'package:projectroots/src/activities/patient_records.dart';
 import 'package:projectroots/theme.dart';
 import 'dart:math';
+import 'package:projectroots/src/pages/signup_form.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
         WordSearchActivity.path: (context) => const WordSearchActivity(),
         MedicineList.path: (context) => const MedicineList(),
         PatientRecords.path: (context) => PatientRecords(),
-        // QueryFormPage.path: (context) => QueryFormPage(),
+        QueryFormPage.path: (context) => QueryFormPage(),
       },
     );
   }
