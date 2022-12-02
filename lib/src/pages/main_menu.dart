@@ -4,6 +4,7 @@ import 'package:projectroots/activities.dart';
 import 'package:projectroots/pages.dart';
 import 'package:projectroots/src/activities/patient_records.dart';
 //import 'package:projectroots/activities/table.dart';
+import 'package:projectroots/src/pages/signup_form.dart';
 
 class MainMenu extends ConsumerWidget {
   final Map<String, dynamic> user;
@@ -108,18 +109,12 @@ class MainMenu extends ConsumerWidget {
                         CircleAvatar(
                           radius: 60,
                           child: ClipOval(
-                              child: Image.asset(
-
-                                "assets/images/patient_record.jpg",
-
-                             
-
-                                fit: BoxFit.cover,
-                                ),
-                              
+                            child: Image.asset(
+                              "assets/images/patient_record.jpg",
+                              fit: BoxFit.cover,
                             ),
+                          ),
                         ),
-                        
                         Center(
                           heightFactor: 1.5,
                           child: Center(
@@ -149,7 +144,7 @@ class MainMenu extends ConsumerWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
                                     ),
-                                    ),
+                                  ),
                                   style: ElevatedButton.styleFrom(
                                       minimumSize: Size(250, 60),
                                       primary: Color.fromARGB(255, 10, 10, 10),
@@ -157,26 +152,28 @@ class MainMenu extends ConsumerWidget {
                                           horizontal: 50, vertical: 20)),
                                 ))),
                         Center(
-                            heightFactor: 1.5,
-                            child: ButtonTheme(
-                                minWidth: 600.0,
-                                height: 100.0,
-                                child: ElevatedButton(
-                                  onPressed: () => _navigateToScreen(
-                                      context, WordSearchActivity.path),
-                                  child: const Text("Word Search",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),),
-                                  style: ElevatedButton.styleFrom(
-                                      minimumSize: Size(250, 60),
-                                      primary: Color.fromARGB(255, 10, 10, 10),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 50, vertical: 20)),
+                          heightFactor: 1.5,
+                          child: ButtonTheme(
+                            minWidth: 600.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              onPressed: () => _navigateToScreen(
+                                  context, WordSearchActivity.path),
+                              child: const Text(
+                                "Word Search",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
                                 ),
-                                ),
-                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(250, 60),
+                                  primary: Color.fromARGB(255, 10, 10, 10),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 50, vertical: 20)),
+                            ),
+                          ),
+                        ),
                         Center(
                             heightFactor: 1.5,
                             child: ButtonTheme(
@@ -185,11 +182,13 @@ class MainMenu extends ConsumerWidget {
                                 child: ElevatedButton(
                                   onPressed: () => _navigateToScreen(
                                       context, ReverseSpellActivity.path),
-                                  child: const Text("Reverse Spell",
-                                  style: TextStyle(
+                                  child: const Text(
+                                    "Reverse Spell",
+                                    style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
-                                    ),),
+                                    ),
+                                  ),
                                   style: ElevatedButton.styleFrom(
                                       minimumSize: Size(250, 60),
                                       primary: Color.fromARGB(255, 10, 10, 10),
@@ -202,16 +201,13 @@ class MainMenu extends ConsumerWidget {
                                 minWidth: 600.0,
                                 height: 170.0,
                                 child: ElevatedButton(
-                                    child: const Text("Picture Quiz",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-
+                                    child: const Text(
+                                      "Picture Quiz",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                    ),
-
-                                    ),),
-
                                     onPressed: () => _navigateToScreen(
                                         context, PictureQuizActivity.path),
                                     style: ElevatedButton.styleFrom(
