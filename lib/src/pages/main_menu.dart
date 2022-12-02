@@ -101,7 +101,8 @@ class MainMenu extends ConsumerWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: 1000.0,
+                // height: 1000.0,
+                
                 padding: const EdgeInsets.symmetric(vertical: 100.0),
                 child: Center(
                   child: Column(
@@ -112,7 +113,7 @@ class MainMenu extends ConsumerWidget {
                           radius: 60,
                           child: ClipOval(
                             child: Image.asset(
-                              "/Users/anuragrao/git_repos/ProjectRoots/assets/images/patient_record.jpg",
+                              "assets/images/patient_record.jpg",
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -131,49 +132,52 @@ class MainMenu extends ConsumerWidget {
                                   fontStyle: FontStyle.normal),
                             ),
                           ),
+                          SizedBox(height: 20),
+                          Center(
+                              heightFactor: 1.5,
+                              child: ButtonTheme(
+                                  minWidth: 600.0,
+                                  height: 100.0,
+                                  child: ElevatedButton(
+                                    onPressed: () => _navigateToScreen(
+                                        context, TodoActivity.path),
+                                    child: const Text(
+                                      "To-do Reminders",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                      minimumSize: Size(250, 60),
+                                      primary: Color.fromARGB(255, 10, 10, 10),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 50, vertical: 20)),
+                                ))),
+                        Center(
+                          heightFactor: 1.5,
+                          child: ButtonTheme(
+                            minWidth: 600.0,
+                            height: 100.0,
+                            child: ElevatedButton(
+                              onPressed: () => _navigateToScreen(
+                                  context, WordSearchActivity.path),
+                              child: const Text(
+                                "Word Search",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(250, 60),
+                                  primary: Color.fromARGB(255, 10, 10, 10),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 50, vertical: 20)),
+                            ),
+                          ),
                         ),
-                        Center(
-                            heightFactor: 1.5,
-                            child: ButtonTheme(
-                                minWidth: 600.0,
-                                height: 100.0,
-                                child: ElevatedButton(
-                                  onPressed: () => _navigateToScreen(
-                                      context, TodoActivity.path),
-                                  child: const Text(
-                                    "To-do Reminders",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      minimumSize: Size(250, 60),
-                                      primary: Color.fromARGB(255, 10, 10, 10),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 50, vertical: 20)),
-                                ))),
-                        Center(
-                            heightFactor: 1.5,
-                            child: ButtonTheme(
-                                minWidth: 600.0,
-                                height: 100.0,
-                                child: ElevatedButton(
-                                  onPressed: () => _navigateToScreen(
-                                      context, WordSearchActivity.path),
-                                  child: const Text(
-                                    "Word Search",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      minimumSize: Size(250, 60),
-                                      primary: Color.fromARGB(255, 10, 10, 10),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 50, vertical: 20)),
-                                ))),
                         Center(
                             heightFactor: 1.5,
                             child: ButtonTheme(
@@ -202,24 +206,45 @@ class MainMenu extends ConsumerWidget {
                                 height: 170.0,
                                 child: ElevatedButton(
                                     child: const Text(
-                                      "Picture Quiz",
+                                      "Reverse Spell",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16,
                                       ),
                                     ),
-                                    onPressed: () => _navigateToScreen(
-                                        context, PictureQuizActivity.path),
                                     style: ElevatedButton.styleFrom(
                                         minimumSize: Size(250, 60),
-                                        primary:
-                                            Color.fromARGB(255, 10, 10, 10),
+                                        primary: Color.fromARGB(255, 10, 10, 10),
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 50, vertical: 20))))),
-                      ]),
+                                            horizontal: 50, vertical: 20)),
+                                  ))),
+                          Center(
+                              heightFactor: 1.7,
+                              child: ButtonTheme(
+                                  minWidth: 600.0,
+                                  height: 170.0,
+                                  child: ElevatedButton(
+                                      child: const Text(
+                                        "Picture Quiz",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      onPressed: () => _navigateToScreen(
+                                          context, PictureQuizActivity.path),
+                                      style: ElevatedButton.styleFrom(
+                                          minimumSize: Size(250, 60),
+                                          primary:
+                                              Color.fromARGB(255, 10, 10, 10),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 50, vertical: 20))))),
+                        ]),
+                  ),
                 ),
-              ),
-            ));
+              
+            ),
+              ));
     }
   }
 

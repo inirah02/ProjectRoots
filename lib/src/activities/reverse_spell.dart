@@ -61,11 +61,11 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     
 
 
-    @override
-    void dispose() {
-      confettiController.dispose();
-      super.dispose();
-    }
+    // @override
+    // void dispose() {
+    //   confettiController.dispose();
+    //   super.dispose();
+    // }
 
     @override
     String result = "";
@@ -78,8 +78,8 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(116, 152, 87, 1),
-        title: Text('Reverse Spell'),
+        backgroundColor: const Color.fromRGBO(116, 152, 87, 1),
+        title: const Text('Reverse Spell'),
       ),
       body: Container(
         constraints: const BoxConstraints(
@@ -142,7 +142,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               ),
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(300, 40),
-                  primary: Color.fromARGB(255, 10, 10, 10),
+                  backgroundColor: Color.fromARGB(255, 10, 10, 10),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
             SizedBox(height: 40),
@@ -157,7 +157,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               ),
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(300, 40),
-                  primary: Color.fromARGB(255, 10, 10, 10),
+                  backgroundColor: Color.fromARGB(255, 10, 10, 10),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
             const SizedBox(
@@ -226,7 +226,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               ),
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(300, 40),
-                  primary: Color.fromARGB(255, 10, 10, 10),
+                  backgroundColor: Color.fromARGB(255, 10, 10, 10),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
           ),
