@@ -99,127 +99,124 @@ class MainMenu extends ConsumerWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: 1000.0,
+                // height: 1000.0,
+                
                 padding: const EdgeInsets.symmetric(vertical: 100.0),
-                child: Center(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 60,
-                          child: ClipOval(
-                            child: Image.asset(
-                              "assets/images/patient_record.jpg",
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Center(
-                          heightFactor: 1.5,
-                          child: Center(
-                            heightFactor: 1.5,
-                            child: Text(
-                              "Hello, ${loggedInUsername}!",
-                              style: const TextStyle(
-                                  color: Color.fromARGB(255, 63, 57, 57),
-                                  fontSize: 26,
-                                  fontFamily: 'bold',
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.normal),
-                            ),
-                          ),
-                        ),
-                        Center(
-                            heightFactor: 1.5,
-                            child: ButtonTheme(
-                                minWidth: 600.0,
-                                height: 100.0,
-                                child: ElevatedButton(
-                                  onPressed: () => _navigateToScreen(
-                                      context, TodoActivity.path),
-                                  child: const Text(
-                                    "To-do Reminders",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      minimumSize: Size(250, 60),
-                                      primary: Color.fromARGB(255, 10, 10, 10),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 50, vertical: 20)),
-                                ))),
-                        Center(
-                          heightFactor: 1.5,
-                          child: ButtonTheme(
-                            minWidth: 600.0,
-                            height: 100.0,
-                            child: ElevatedButton(
-                              onPressed: () => _navigateToScreen(
-                                  context, WordSearchActivity.path),
-                              child: const Text(
-                                "Word Search",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          
+                          Center(
+                            
+                            child: Center(
+                             
+                              child: Text(
+                                "Hello, ${loggedInUsername}!",
+                                style: const TextStyle(
+                                    color: Color.fromARGB(255, 63, 57, 57),
+                                    fontSize: 36,
+                                    fontFamily: 'bold',
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.normal),
                               ),
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(250, 60),
-                                  primary: Color.fromARGB(255, 10, 10, 10),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 50, vertical: 20)),
                             ),
                           ),
-                        ),
-                        Center(
-                            heightFactor: 1.5,
-                            child: ButtonTheme(
-                                minWidth: 600.0,
-                                height: 100.0,
-                                child: ElevatedButton(
-                                  onPressed: () => _navigateToScreen(
-                                      context, ReverseSpellActivity.path),
-                                  child: const Text(
-                                    "Reverse Spell",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                      minimumSize: Size(250, 60),
-                                      primary: Color.fromARGB(255, 10, 10, 10),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 50, vertical: 20)),
-                                ))),
-                        Center(
-                            heightFactor: 1.7,
-                            child: ButtonTheme(
-                                minWidth: 600.0,
-                                height: 170.0,
-                                child: ElevatedButton(
+                          SizedBox(height: 20),
+                          Center(
+                              heightFactor: 1.5,
+                              child: ButtonTheme(
+                                  minWidth: 600.0,
+                                  height: 100.0,
+                                  child: ElevatedButton(
+                                    onPressed: () => _navigateToScreen(
+                                        context, TodoActivity.path),
                                     child: const Text(
-                                      "Picture Quiz",
+                                      "To-do Reminders",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16,
                                       ),
                                     ),
-                                    onPressed: () => _navigateToScreen(
-                                        context, PictureQuizActivity.path),
                                     style: ElevatedButton.styleFrom(
                                         minimumSize: Size(250, 60),
-                                        primary:
-                                            Color.fromARGB(255, 10, 10, 10),
+                                        primary: Color.fromARGB(255, 10, 10, 10),
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 50, vertical: 20))))),
-                      ]),
+                                            horizontal: 50, vertical: 20)),
+                                  ))),
+                          Center(
+                            heightFactor: 1.5,
+                            child: ButtonTheme(
+                              minWidth: 600.0,
+                              height: 100.0,
+                              child: ElevatedButton(
+                                onPressed: () => _navigateToScreen(
+                                    context, WordSearchActivity.path),
+                                child: const Text(
+                                  "Word Search",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    minimumSize: Size(250, 60),
+                                    primary: Color.fromARGB(255, 10, 10, 10),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 50, vertical: 20)),
+                              ),
+                            ),
+                          ),
+                          Center(
+                              heightFactor: 1.5,
+                              child: ButtonTheme(
+                                  minWidth: 600.0,
+                                  height: 100.0,
+                                  child: ElevatedButton(
+                                    onPressed: () => _navigateToScreen(
+                                        context, ReverseSpellActivity.path),
+                                    child: const Text(
+                                      "Reverse Spell",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        minimumSize: Size(250, 60),
+                                        primary: Color.fromARGB(255, 10, 10, 10),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 50, vertical: 20)),
+                                  ))),
+                          Center(
+                              heightFactor: 1.7,
+                              child: ButtonTheme(
+                                  minWidth: 600.0,
+                                  height: 170.0,
+                                  child: ElevatedButton(
+                                      child: const Text(
+                                        "Picture Quiz",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      onPressed: () => _navigateToScreen(
+                                          context, PictureQuizActivity.path),
+                                      style: ElevatedButton.styleFrom(
+                                          minimumSize: Size(250, 60),
+                                          primary:
+                                              Color.fromARGB(255, 10, 10, 10),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 50, vertical: 20))))),
+                        ]),
+                  ),
                 ),
-              ),
-            ));
+              
+            ),
+              ));
     }
   }
 
