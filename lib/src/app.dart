@@ -25,6 +25,7 @@ class App extends StatelessWidget {
         WordSearchActivity.path: (context) => const WordSearchActivity(),
         MedicineList.path: (context) => const MedicineList(),
         PatientRecords.path: (context) => PatientRecords(),
+        // QueryFormPage.path: (context) => QueryFormPage(),
       },
     );
   }
