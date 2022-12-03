@@ -27,14 +27,25 @@ class Hints extends StatelessWidget {
               Center(
                   heightFactor: 1,
                   child: ListTile(
-                    leading: Text(textAlign: TextAlign.center, "Your name"),
+                    leading: Text(
+                        textAlign: TextAlign.center,
+                        "Your name",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )),
                     tileColor: Color.fromARGB(255, 146, 215, 235),
                   )),
               Center(
                   heightFactor: 1,
                   child: ListTile(
-                    leading:
-                        Text(textAlign: TextAlign.center, "Your spouse's name"),
+                    leading: Text(
+                        textAlign: TextAlign.center,
+                        "Your spouse's name",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )),
                     tileColor: Color.fromARGB(255, 235, 177, 226),
                   )),
               Center(
@@ -42,14 +53,23 @@ class Hints extends StatelessWidget {
                   child: ListTile(
                     leading: Text(
                         textAlign: TextAlign.center,
-                        "The colour of your house"),
-                    tileColor: Color.fromARGB(255, 169, 132, 13),
+                        "The colour of your house",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )),
+                    tileColor: Color.fromARGB(255, 209, 208, 207),
                   )),
               Center(
                   heightFactor: 1,
                   child: ListTile(
-                    leading:
-                        Text(textAlign: TextAlign.center, "Your city's name"),
+                    leading: Text(
+                        textAlign: TextAlign.center,
+                        "Your city's name",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )),
                     tileColor: Color.fromARGB(255, 215, 228, 74),
                   )),
               Center(
@@ -57,14 +77,23 @@ class Hints extends StatelessWidget {
                   child: ListTile(
                     leading: Text(
                         textAlign: TextAlign.center,
-                        "What are you allergic to"),
+                        "What are you allergic to",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )),
                     tileColor: Color.fromARGB(255, 163, 227, 202),
                   )),
               Center(
                   heightFactor: 1,
                   child: ListTile(
                     leading: Text(
-                        textAlign: TextAlign.center, "The name of your city"),
+                        textAlign: TextAlign.center,
+                        "The name of your city",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        )),
                     tileColor: Color.fromARGB(255, 163, 227, 202),
                   )),
             ]))));

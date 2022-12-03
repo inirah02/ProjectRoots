@@ -355,6 +355,7 @@ class _QueryFormPageState extends State<QueryFormPage> {
                             'locality_name': locality_name,
                             'house_colour': house_colour,
                             'allergy': allergies,
+                            'profile_type': 0
                             //'registered':
                           });
                         } catch (e) {
