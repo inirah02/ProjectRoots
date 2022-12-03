@@ -7,6 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:projectroots/src/pages/patient_screen.dart';
 
+import '../../pages.dart';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -20,7 +22,9 @@ class LoginPage extends StatelessWidget {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithPopup(googleProvider);
   }
-
+_navigateToScreen(context, path) {
+    Navigator.of(context).pushNamed(path);
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -129,7 +133,7 @@ class LoginPage extends StatelessWidget {
                             "Sign Up",
                             style: TextStyle(fontStyle: FontStyle.normal),
                           ),
-                          onPressed: () async {},
+                          onPressed: () =>_navigateToScreen(context, QueryFormPage.path),
                           style: ElevatedButton.styleFrom(
                               primary: Color.fromARGB(255, 10, 10, 10),
                               padding: EdgeInsets.symmetric(

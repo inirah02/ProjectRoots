@@ -77,6 +77,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
 
   void _onStart() {
     setState(() {
+      get_target_word();
       isStarted = true;
     });
   }
@@ -191,18 +192,16 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
             SizedBox(height: 40),
             OutlinedButton(
               onPressed: _repeat,
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(300, 40),
+                  backgroundColor: Color.fromARGB(255, 242, 242, 242),
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
               child: Text(
                 "Repeat word",
                 selectionColor: Colors.black,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25,
-                ),
+                style: TextStyle(fontSize: 25, color: Colors.black),
               ),
-              style: ElevatedButton.styleFrom(
-                  minimumSize: Size(300, 40),
-                  backgroundColor: Color.fromARGB(255, 223, 218, 218),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
             const SizedBox(
               height: 45,

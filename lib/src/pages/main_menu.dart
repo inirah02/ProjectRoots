@@ -80,9 +80,9 @@ class MainMenu extends ConsumerWidget {
             ]);
       default:
         final _fireStore = FirebaseFirestore.instance;
-        final loggedInUsername = _fireStore.collection("users").doc().get();
+        final loggedInUsername =
+            _fireStore.collection("users").doc("first_name").get();
 
-        _navigateToScreen(context, QueryFormPage.path);
         return Theme(
           data: ThemeData.dark()
               .copyWith(scaffoldBackgroundColor: Colors.greenAccent),
