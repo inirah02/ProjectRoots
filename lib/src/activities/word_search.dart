@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -51,6 +53,8 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   // For the Line Painter
   Offset lineStart = Offset.zero;
   Offset lineEnd = Offset.zero;
+  final _fireStore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
 
   Map<String, List<int>> solutions = {};
   // Grid Variables
@@ -61,13 +65,25 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   final Set<GridCellRenderObject> activeCells = {};
   final List<int> activeCellIndexes = [];
   // Test words
-  final targetWords = ["rohan", "monica", "bangalore", "green", "peanuts"];
+  Future<List<String>> getCurrentUser() async {
+      final user = _auth.currentUser;
+      if (user == null) {
+        return Future.value([]);
+      } else {
+        Map<String, dynamic> user_deets =
+            (await _fireStore.collection('users').doc(user.uid).get()).data()!;
+        return await user_deets["first_name"];
+      }
+    }
+  late final targetWords =   getCurrentUser();
+  //["rohan", "monica", "bangalore", "green", "peanuts"];
 
   int get gridArea => gridSize * gridSize;
 
   @override
   void initState() {
     generateLetterGrid();
+    
 
     // TODO: Refactor to avoid collisions on origin values;
     for (final word in targetWords) {

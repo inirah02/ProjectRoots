@@ -179,22 +179,10 @@ class _QueryFormPageState extends State<QueryFormPage> {
     super.dispose();
   }
 
-  void getCurrentUser() async {
-    try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-        print(loggedInUser.email);
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
+
     dayTextController = TextEditingController();
     first_nameTextController = TextEditingController();
     cityTextController = TextEditingController();
@@ -350,34 +338,36 @@ class _QueryFormPageState extends State<QueryFormPage> {
                 Container(
                   width: screenSize.width,
                   child: ElevatedButton(
-
                       child: Text(
                         'Login',
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
-                        await _fireStore.collection('test').add({
-                          'created': Timestamp.now(),
-                          'first_name': first_name,
-                          'spouse_name': spouse_name,
-                          'city': city,
-                          'locality_name': locality_name,
-                          'fav_food': fav_food,
-                          'allergy': allergies,
-                        });
+                        try {
+                          await _fireStore
+                              .collection('users')
+                              .doc(_auth.currentUser!.uid)
+                              .update({
+                            'created': Timestamp.now(),
+                            'first_name': first_name,
+                            'spouse_name': spouse_name,
+                            'city': city,
+                            'locality_name': locality_name,
+                            'fav_food': fav_food,
+                            'allergy': allergies,
+                            //'registered':
+                          });
+                        } catch (e) {
+                          print(e);
+                        }
+                        ;
 
                         await Navigator.of(context)
                             .pushNamed(PatientScreen.path);
-
-                
                       }
 
                       // Only if the input form is valid (the user has entered text)
                       ),
-
-                    
- 
-         
                   margin: EdgeInsets.only(top: 20.0),
                 )
               ],

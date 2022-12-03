@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:projectroots/src/extensions/string.dart';
 import 'dart:async';
+import 'dart:math';
 // class UserInformation extends StatefulWidget {
 //   @override
 //     _UserInformationState createState() => _UserInformationState();
@@ -42,10 +43,13 @@ class ReverseSpellActivity extends StatefulWidget {
   static const path = '/reverse_spelling';
   static const name = 'Reverse Spell';
   final String targetWord;
+  final _fireStore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
 
   ReverseSpellActivity({
     super.key,
-    this.targetWord = 'hr',
+    required this.targetWord,
+    //_getCurrentUser().then(String target_word),
   });
 
   @override
@@ -56,12 +60,32 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
   //String target_Word=get_target_word();
   bool isStarted = false;
   bool? correctAns;
+  final _fireStore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+
   FlutterTts flutterTts = FlutterTts();
   late final TextEditingController _textEditingController;
+  Future<String> _getCurrentUser() async {
+    final user = _auth.currentUser;
+    if (user == null) {
+      return Future.value("");
+    } else {
+      Map<String, dynamic> user_deets =
+          (await _fireStore.collection('users').doc(user.uid).get()).data()!;
+      return await user_deets["first_name"];
+    }
+  }
 
-  @override
-  void initState() {
-    _textEditingController = TextEditingController();
+  _getUser() async {
+    _getCurrentUser().then((String result) {
+      
+        target_word = result;
+        @override
+        void initState() {
+          _textEditingController = TextEditingController();
+        }
+      });
+    });
     super.initState();
   }
 

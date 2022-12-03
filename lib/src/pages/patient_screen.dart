@@ -8,31 +8,46 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final Color blue = Color.fromARGB(255, 24, 155, 116);
 
-class PatientScreen extends StatelessWidget {
+class PatientScreen extends StatefulWidget {
+  const PatientScreen({super.key});
+  static var path = "projectroots/src/pages/patient_screen.dart";
+  @override
+  State<PatientScreen> createState() => _PatientScreenState();
+}
+
+class _PatientScreenState extends State<PatientScreen> {
   final _fireStore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  static var path = "projectroots/src/pages/patient_screen.dart";
   late User loggedInUser;
+  String? user_name;
   _navigateToScreen(context, path) {
     Navigator.of(context).pushNamed(path);
   }
 
-  getCurrentUser() async {
-    try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-        print(loggedInUser.email);
-        return loggedInUser;
-      }
-    } catch (e) {
-      print(e);
+  Future<String> getCurrentUser() async {
+    final user = _auth.currentUser;
+    if (user == null) {
+      return Future.value("User");
+    } else {
+      Map<String, dynamic> user_deets =
+          (await _fireStore.collection('users').doc(user.uid).get()).data()!;
+      return user_deets["first_name"];
     }
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentUser().then((value) {
+      setState(() {
+        user_name = value;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var loggedInUsername = getCurrentUser();
     return Theme(
         data: ThemeData.dark()
             .copyWith(scaffoldBackgroundColor: Colors.greenAccent),
@@ -73,7 +88,9 @@ class PatientScreen extends StatelessWidget {
                       child: Center(
                         heightFactor: 1.5,
                         child: Text(
-                          "Hello, ${loggedInUsername.toString()}!",
+                          user_name == null
+                              ? "Hello, User!"
+                              : "Hello, ${user_name}",
                           style: const TextStyle(
                               color: Color.fromARGB(255, 63, 57, 57),
                               fontSize: 26,

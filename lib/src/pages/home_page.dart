@@ -54,7 +54,14 @@ class HomePage extends ConsumerWidget {
                     future: db.collection('users').doc(data.uid).get(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        return MainMenu(snapshot.data!.data()!);
+                        Map<String, dynamic> user_data =
+                            snapshot.requireData.data()!;
+                        if (user_data.containsKey("first_name")) {
+                          return MainMenu(snapshot.data!.data()!);
+                        } else {
+                          return QueryFormPage();
+                        }
+                         
                       }
                       if (snapshot.hasError) {
                         return Text(snapshot.error.toString());
