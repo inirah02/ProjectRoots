@@ -189,10 +189,11 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
             SizedBox(height: 40),
-            ElevatedButton(
+            OutlinedButton(
               onPressed: _repeat,
               child: Text(
                 "Repeat word",
+                selectionColor: Colors.black,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,
@@ -200,7 +201,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               ),
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(300, 40),
-                  backgroundColor: Color.fromARGB(255, 10, 10, 10),
+                  backgroundColor: Color.fromARGB(255, 223, 218, 218),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
             const SizedBox(
@@ -256,7 +257,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
           height: 1000.0,
           padding: const EdgeInsets.symmetric(vertical: 100.0),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 280),
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
             child: ElevatedButton(
               onPressed: _speakWord,
               child: const Text(
@@ -268,7 +269,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                  minimumSize: Size(300, 40),
+                  minimumSize: Size(30, 40),
                   backgroundColor: Color.fromARGB(255, 10, 10, 10),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
