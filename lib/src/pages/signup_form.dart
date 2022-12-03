@@ -350,6 +350,7 @@ class _QueryFormPageState extends State<QueryFormPage> {
                 Container(
                   width: screenSize.width,
                   child: ElevatedButton(
+
                       child: Text(
                         'Login',
                         style: TextStyle(color: Colors.white),
@@ -369,6 +370,10 @@ class _QueryFormPageState extends State<QueryFormPage> {
 
                       // Only if the input form is valid (the user has entered text)
                       ),
+
+                    
+ 
+         
                   margin: EdgeInsets.only(top: 20.0),
                 )
               ],
