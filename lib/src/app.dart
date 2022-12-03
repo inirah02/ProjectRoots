@@ -22,11 +22,12 @@ class App extends StatelessWidget {
         PictureQuizActivity.path: (context) => PictureQuizActivity(),
         TodoActivity.path: (context) => TodoActivity(),
         ReverseSpellActivity.path: (context) =>
-            const ReverseSpellActivity(targetWord: "Rohan"),
+            ReverseSpellActivity(),
         WordSearchActivity.path: (context) => const WordSearchActivity(),
         MedicineList.path: (context) => const MedicineList(),
         PatientRecords.path: (context) => PatientRecords(),
         QueryFormPage.path: (context) => QueryFormPage(),
+        PatientScreen.path:((context) => PatientScreen()),
       },
     );
   }

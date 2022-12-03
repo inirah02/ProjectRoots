@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:projectroots/pages.dart';
 import 'package:projectroots/src/app.dart';
 
 class QueryFormPage extends StatefulWidget {
@@ -359,14 +360,12 @@ class _QueryFormPageState extends State<QueryFormPage> {
                         'first_name': first_name,
                         'spouse_name': spouse_name,
                         'city': city,
-                        'localit_name': locality_name,
+                        'locality_name': locality_name,
                         'fav_food': fav_food,
                         'allergy': allergies,
                       });
+                      await Navigator.of(context).pushNamed(PatientScreen.path);
                     },
-
-                    // THIS DOES NOT WORK AND IDK WHY
-                    // _navigateToScreen());
 
                     // Only if the input form is valid (the user has entered text)
                   ),

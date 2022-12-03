@@ -1,17 +1,51 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:confetti/confetti.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:projectroots/src/extensions/string.dart';
 import 'dart:async';
+// class UserInformation extends StatefulWidget {
+//   @override
+//     _UserInformationState createState() => _UserInformationState();
+// }
 
+// class _UserInformationState extends State<UserInformation> {
+//   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('users').snapshots();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return StreamBuilder<QuerySnapshot>(
+//       stream: _usersStream,
+//       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+//         if (snapshot.hasError) {
+//           return Text('Something went wrong');
+//         }
+
+//         if (snapshot.connectionState == ConnectionState.waiting) {
+//           return Text("Loading");
+//         }
+
+//         return ListView(
+//           children: snapshot.data!.docs.map((DocumentSnapshot document) {
+//           Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+//             return ListTile(
+//               .collection('users').doc(data.uid).get()
+//             );
+//           }).toList(),
+//         );
+//       },
+//     );
+//   }
+// }
 class ReverseSpellActivity extends StatefulWidget {
   static const path = '/reverse_spelling';
   static const name = 'Reverse Spell';
   final String targetWord;
 
-  const ReverseSpellActivity({
+  ReverseSpellActivity({
     super.key,
-    required this.targetWord,
+    this.targetWord = 'hr',
   });
 
   @override
@@ -19,6 +53,7 @@ class ReverseSpellActivity extends StatefulWidget {
 }
 
 class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
+  //String target_Word=get_target_word();
   bool isStarted = false;
   bool? correctAns;
   FlutterTts flutterTts = FlutterTts();
@@ -28,6 +63,16 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
   void initState() {
     _textEditingController = TextEditingController();
     super.initState();
+  }
+
+  String get_target_word() {
+    final _fireStore = FirebaseFirestore.instance;
+    final _auth = FirebaseAuth.instance;
+    final User? user = _auth.currentUser;
+    final uid = user?.uid;
+    var user_info = _fireStore.collection('users').doc(uid).get();
+    print(user_info);
+    return 'Here';
   }
 
   void _onStart() {
@@ -58,8 +103,6 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
 
   Widget _buildActiviyWidget(BuildContext context) {
     final confettiController = ConfettiController();
-    
-
 
     // @override
     // void dispose() {
@@ -124,7 +167,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
                   correctAns = _textEditingController.text.toLowerCase() ==
                       widget.targetWord.reverse().toLowerCase();
                 });
-                
+
                 if (correctAns!) {
                   confettiController.play();
                   Timer(const Duration(seconds: 2), () {
