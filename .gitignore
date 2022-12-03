@@ -54,7 +54,15 @@ gen-external-apklibs
 .pub/
 coverage/
 lib/generated_plugin_registrant.dart
-.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/version
+.dart_tool/package_config_subset
+.dart_tool/package_config.json
+
+
+
+
 # For library packages, don’t commit the pubspec.lock file.
 # Regenerating the pubspec.lock file lets you test your package against the latest compatible versions of its dependencies.
 # See https://dart.dev/guides/libraries/private-files#pubspeclock
