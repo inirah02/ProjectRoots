@@ -132,8 +132,8 @@ class _QueryFormPageState extends State<QueryFormPage> {
   late String city = '';
   late TextEditingController cityTextController;
   late String fav_food = '';
-  late TextEditingController fav_foodTextController;
-  String fav_color = '';
+  late TextEditingController house_colourTextController;
+  String house_colour = '';
   String locality_name = '';
   late TextEditingController locality_nameTextController;
   late String allergies;
@@ -175,7 +175,7 @@ class _QueryFormPageState extends State<QueryFormPage> {
     spouse_nameTextController.dispose();
     locality_nameTextController.dispose();
     allergiesTextController.dispose();
-    fav_foodTextController.dispose();
+    house_colourTextController.dispose();
     super.dispose();
   }
 
@@ -189,7 +189,7 @@ class _QueryFormPageState extends State<QueryFormPage> {
     spouse_nameTextController = TextEditingController();
     locality_nameTextController = TextEditingController();
     allergiesTextController = TextEditingController();
-    fav_foodTextController = TextEditingController();
+    house_colourTextController = TextEditingController();
   }
 
   @override
@@ -267,12 +267,12 @@ class _QueryFormPageState extends State<QueryFormPage> {
                   ),
                 ),
                 TextField(
-                  controller: fav_foodTextController,
+                  controller: house_colourTextController,
                   onChanged: (value) {
                     fav_food = value;
                   },
                   decoration: InputDecoration(
-                    hintText: 'Name your favourite food',
+                    hintText: 'What colour is your house',
                     alignLabelWithHint: true,
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -353,15 +353,17 @@ class _QueryFormPageState extends State<QueryFormPage> {
                             'spouse_name': spouse_name,
                             'city': city,
                             'locality_name': locality_name,
-                            'fav_food': fav_food,
+                            'house_colour': house_colour,
                             'allergy': allergies,
                             //'registered':
-                          }).then((value) => Navigator.of(context)
-                                  .pushNamed(PatientScreen.path));
+                          });
                         } catch (e) {
+                          Navigator.of(context).pushNamed(PatientScreen.path);
                           print(e);
                         }
                         ;
+
+                        Navigator.of(context).pushNamed(PatientScreen.path);
                       }
 
                       // Only if the input form is valid (the user has entered text)

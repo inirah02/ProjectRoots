@@ -7,37 +7,66 @@ class Hints extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Hints")),
-        body: Column(children: [
-          Center(
-              heightFactor: 1,
-              child: ListTile(
-                leading: Text("Your son's name"),
-                tileColor: Color.fromARGB(255, 146, 215, 235),
-              )),
-          Center(
-              heightFactor: 1,
-              child: ListTile(
-                leading: Text("Your spouse's name"),
-                tileColor: Color.fromARGB(255, 235, 177, 226),
-              )),
-          Center(
-              heightFactor: 1,
-              child: ListTile(
-                leading: Text("The colour of your house"),
-                tileColor: Color.fromARGB(255, 169, 132, 13),
-              )),
-          Center(
-              heightFactor: 1,
-              child: ListTile(
-                leading: Text("Your city's name"),
-                tileColor: Color.fromARGB(255, 215, 228, 74),
-              )),
-          Center(
-              heightFactor: 1,
-              child: ListTile(
-                leading: Text("What are you allergic to"),
-                tileColor: Color.fromARGB(255, 163, 227, 202),
-              )),
-        ]));
+        body: Container(
+            constraints: const BoxConstraints(
+                maxHeight: double.infinity,
+                maxWidth: double.infinity,
+                minHeight: double.infinity,
+                minWidth: double.infinity),
+            decoration: BoxDecoration(
+              color: Color(0xfffffde8),
+              image: DecorationImage(
+                image: AssetImage("assets/images/patient_main_menu_bg.jpg"),
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Center(
+                child: Column(children: [
+              Center(
+                  heightFactor: 1,
+                  child: ListTile(
+                    leading: Text(textAlign: TextAlign.center, "Your name"),
+                    tileColor: Color.fromARGB(255, 146, 215, 235),
+                  )),
+              Center(
+                  heightFactor: 1,
+                  child: ListTile(
+                    leading:
+                        Text(textAlign: TextAlign.center, "Your spouse's name"),
+                    tileColor: Color.fromARGB(255, 235, 177, 226),
+                  )),
+              Center(
+                  heightFactor: 1,
+                  child: ListTile(
+                    leading: Text(
+                        textAlign: TextAlign.center,
+                        "The colour of your house"),
+                    tileColor: Color.fromARGB(255, 169, 132, 13),
+                  )),
+              Center(
+                  heightFactor: 1,
+                  child: ListTile(
+                    leading:
+                        Text(textAlign: TextAlign.center, "Your city's name"),
+                    tileColor: Color.fromARGB(255, 215, 228, 74),
+                  )),
+              Center(
+                  heightFactor: 1,
+                  child: ListTile(
+                    leading: Text(
+                        textAlign: TextAlign.center,
+                        "What are you allergic to"),
+                    tileColor: Color.fromARGB(255, 163, 227, 202),
+                  )),
+              Center(
+                  heightFactor: 1,
+                  child: ListTile(
+                    leading: Text(
+                        textAlign: TextAlign.center, "The name of your city"),
+                    tileColor: Color.fromARGB(255, 163, 227, 202),
+                  )),
+            ]))));
   }
 }
