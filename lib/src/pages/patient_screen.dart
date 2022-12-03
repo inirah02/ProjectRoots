@@ -1,22 +1,42 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projectroots/activities.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final Color blue = Color.fromARGB(255, 24, 155, 116);
 
 class PatientScreen extends StatelessWidget {
-  String loggedInUsername = "Grandma Varuni";
+  final _fireStore = FirebaseFirestore.instance;
+  final _auth = FirebaseAuth.instance;
+  static var path = "projectroots/src/pages/patient_screen.dart";
+  late User loggedInUser;
   _navigateToScreen(context, path) {
     Navigator.of(context).pushNamed(path);
   }
 
+  getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+        return loggedInUser;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    var loggedInUsername = getCurrentUser();
     return Theme(
         data: ThemeData.dark()
             .copyWith(scaffoldBackgroundColor: Colors.greenAccent),
         child: Scaffold(
-          //appBar: AppBar(backgroundColor: Color(0xFFA4C639)),
           body: Container(
             constraints: const BoxConstraints(
                 maxHeight: double.infinity,
@@ -39,21 +59,21 @@ class PatientScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 60,
-                      child: ClipOval(
-                        child: Image.asset(
-                          "/Users/anuragrao/git_repos/ProjectRoots/assets/images/patient_record.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                    // CircleAvatar(
+                    //   radius: 60,
+                    //   child: ClipOval(
+                    //     child: Image.asset(
+                    //       "/Users/anuragrao/git_repos/ProjectRoots/assets/images/patient_record.jpg",
+                    //       fit: BoxFit.cover,
+                    //     ),
+                    //   ),
+                    // ),
                     Center(
                       heightFactor: 1.5,
                       child: Center(
                         heightFactor: 1.5,
                         child: Text(
-                          "Hello, ${loggedInUsername}!",
+                          "Hello, ${loggedInUsername.toString()}!",
                           style: const TextStyle(
                               color: Color.fromARGB(255, 63, 57, 57),
                               fontSize: 26,
