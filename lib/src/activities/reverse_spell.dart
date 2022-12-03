@@ -42,13 +42,13 @@ import 'dart:math';
 class ReverseSpellActivity extends StatefulWidget {
   static const path = '/reverse_spelling';
   static const name = 'Reverse Spell';
-  final String targetWord;
+
   final _fireStore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
 
   ReverseSpellActivity({
     super.key,
-    required this.targetWord,
+
     //_getCurrentUser().then(String target_word),
   });
 
@@ -62,10 +62,11 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
   bool? correctAns;
   final _fireStore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
+  late String target_word;
 
   FlutterTts flutterTts = FlutterTts();
   late final TextEditingController _textEditingController;
-  Future<String> _getCurrentUser() async {
+  Future<String> getCurrentUser() async {
     final user = _auth.currentUser;
     if (user == null) {
       return Future.value("");
@@ -76,27 +77,19 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     }
   }
 
-  _getUser() async {
-    _getCurrentUser().then((String result) {
-      
-        target_word = result;
-        @override
-        void initState() {
-          _textEditingController = TextEditingController();
-        }
+  @override
+  void initState() {
+    _textEditingController = TextEditingController();
+    super.initState();
+    getCurrentUser().then((value) {
+      setState(() {
+        var rand = new Random();
+
+        //get the random string
+        int i = rand.nextInt(value.length);
+        target_word = value[i];
       });
     });
-    super.initState();
-  }
-
-  String get_target_word() {
-    final _fireStore = FirebaseFirestore.instance;
-    final _auth = FirebaseAuth.instance;
-    final User? user = _auth.currentUser;
-    final uid = user?.uid;
-    var user_info = _fireStore.collection('users').doc(uid).get();
-    print(user_info);
-    return 'Here';
   }
 
   void _onStart() {
@@ -109,19 +102,19 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     flutterTts.setLanguage("en-IN");
     flutterTts.setPitch(1);
     flutterTts.speak("Reverse spell the word");
-    flutterTts.speak(widget.targetWord);
+    flutterTts.speak(target_word);
     _onStart();
   }
 
   void _repeat() {
-    flutterTts.speak(widget.targetWord);
+    flutterTts.speak(target_word);
   }
 
   void _onEvaluateAnswer() {
-    print(widget.targetWord.reverse());
+    print(target_word.reverse());
     setState(() {
       correctAns = _textEditingController.text.toLowerCase() ==
-          widget.targetWord.reverse().toLowerCase();
+          target_word.reverse().toLowerCase();
     });
   }
 
@@ -189,7 +182,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               onPressed: () {
                 setState(() {
                   correctAns = _textEditingController.text.toLowerCase() ==
-                      widget.targetWord.reverse().toLowerCase();
+                      target_word.reverse().toLowerCase();
                 });
 
                 if (correctAns!) {
@@ -224,7 +217,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                  minimumSize: Size(300, 40),
+                  minimumSize: Size(60, 40),
                   backgroundColor: Color.fromARGB(255, 223, 218, 218),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),

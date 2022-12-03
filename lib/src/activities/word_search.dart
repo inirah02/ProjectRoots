@@ -66,16 +66,17 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   final List<int> activeCellIndexes = [];
   // Test words
   Future<List<String>> getCurrentUser() async {
-      final user = _auth.currentUser;
-      if (user == null) {
-        return Future.value([]);
-      } else {
-        Map<String, dynamic> user_deets =
-            (await _fireStore.collection('users').doc(user.uid).get()).data()!;
-        return await user_deets["first_name"];
-      }
+    final user = _auth.currentUser;
+    if (user == null) {
+      return Future.value([]);
+    } else {
+      Map<String, dynamic> user_deets =
+          (await _fireStore.collection('users').doc(user.uid).get()).data()!;
+      return await user_deets["first_name"];
     }
-  late final targetWords =   getCurrentUser();
+  }
+
+  late List targetWords = [];
   //["rohan", "monica", "bangalore", "green", "peanuts"];
 
   int get gridArea => gridSize * gridSize;
@@ -83,7 +84,11 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   @override
   void initState() {
     generateLetterGrid();
-    
+    getCurrentUser().then((value) {
+      setState(() {
+        targetWords = value;
+      });
+    });
 
     // TODO: Refactor to avoid collisions on origin values;
     for (final word in targetWords) {

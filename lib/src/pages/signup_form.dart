@@ -356,14 +356,12 @@ class _QueryFormPageState extends State<QueryFormPage> {
                             'fav_food': fav_food,
                             'allergy': allergies,
                             //'registered':
-                          });
+                          }).then((value) => Navigator.of(context)
+                                  .pushNamed(PatientScreen.path));
                         } catch (e) {
                           print(e);
                         }
                         ;
-
-                        await Navigator.of(context)
-                            .pushNamed(PatientScreen.path);
                       }
 
                       // Only if the input form is valid (the user has entered text)
