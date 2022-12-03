@@ -350,25 +350,25 @@ class _QueryFormPageState extends State<QueryFormPage> {
                 Container(
                   width: screenSize.width,
                   child: ElevatedButton(
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () async {
-                      _fireStore.collection('test').add({
-                        'created': Timestamp.now(),
-                        'first_name': first_name,
-                        'spouse_name': spouse_name,
-                        'city': city,
-                        'locality_name': locality_name,
-                        'fav_food': fav_food,
-                        'allergy': allergies,
-                      });
-                      await Navigator.of(context).pushNamed(PatientScreen.path);
-                    },
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () async {
+                        await _fireStore.collection('test').add({
+                          'created': Timestamp.now(),
+                          'first_name': first_name,
+                          'spouse_name': spouse_name,
+                          'city': city,
+                          'locality_name': locality_name,
+                          'fav_food': fav_food,
+                          'allergy': allergies,
+                        });
+                        Navigator.of(context).pushNamed(PatientScreen.path);
+                      }
 
-                    // Only if the input form is valid (the user has entered text)
-                  ),
+                      // Only if the input form is valid (the user has entered text)
+                      ),
                   margin: EdgeInsets.only(top: 20.0),
                 )
               ],
