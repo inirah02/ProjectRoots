@@ -53,7 +53,6 @@ gen-external-apklibs
 .pub-cache/
 .pub/
 coverage/
-lib/generated_plugin_registrant.dart
 .flutter-plugins
 .flutter-plugins-dependencies
 .dart_tool/version

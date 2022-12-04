@@ -72,7 +72,11 @@ class WordSearchActivityState extends State<WordSearchActivity> {
     } else {
       Map<String, dynamic> user_deets =
           (await _fireStore.collection('users').doc(user.uid).get()).data()!;
-      return await user_deets["first_name"];
+      return await [
+        user_deets["first_name"],
+        user_deets["spouse_name"],
+        user_deets["fav_colour"]
+      ];
     }
   }
 
@@ -232,6 +236,9 @@ class WordSearchActivityState extends State<WordSearchActivity> {
         ),
       ),
       floatingActionButton: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.black,
+          ),
           onPressed: (() => Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Hints()))),
           child: Text("Hints")),

@@ -86,8 +86,8 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
         var rand = new Random();
 
         //get the random string
-        int i = rand.nextInt(value.length);
-        target_word = value[i];
+
+        target_word = value;
       });
     });
   }
@@ -276,7 +276,6 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
             child: ElevatedButton(
-              
               onPressed: _speakWord,
               child: const Text(
                 'Start Game',
