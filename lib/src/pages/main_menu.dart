@@ -83,7 +83,8 @@ class MainMenu extends ConsumerWidget {
         final loggedInUsername = _fireStore.collection("users").doc('first_name').get();
 
         _navigateToScreen(context, QueryFormPage.path);
-        return Theme(
+        return 
+          Theme(
           data: ThemeData.dark()
               .copyWith(scaffoldBackgroundColor: Colors.greenAccent),
           child: Scaffold(

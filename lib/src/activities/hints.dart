@@ -24,78 +24,65 @@ class Hints extends StatelessWidget {
             ),
             child: Center(
                 child: Column(children: [
-              Center(
-                  heightFactor: 1,
-                  child: ListTile(
-                    leading: Text(
-                        textAlign: TextAlign.center,
-                        "Your name",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        )),
-                    tileColor: Color.fromARGB(255, 146, 215, 235),
-                  )),
-              Center(
-                  heightFactor: 1,
-                  child: ListTile(
-                    leading: Text(
-                        textAlign: TextAlign.center,
-                        "Your spouse's name",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        )),
-                    tileColor: Color.fromARGB(255, 235, 177, 226),
-                  )),
-              Center(
-                  heightFactor: 1,
-                  child: ListTile(
-                    leading: Text(
-                        textAlign: TextAlign.center,
-                        "The colour of your house",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        )),
-                    tileColor: Color.fromARGB(255, 209, 208, 207),
-                  )),
-              Center(
-                  heightFactor: 1,
-                  child: ListTile(
-                    leading: Text(
-                        textAlign: TextAlign.center,
-                        "Your city's name",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        )),
-                    tileColor: Color.fromARGB(255, 215, 228, 74),
-                  )),
-              Center(
-                  heightFactor: 1,
-                  child: ListTile(
-                    leading: Text(
-                        textAlign: TextAlign.center,
-                        "What are you allergic to",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        )),
-                    tileColor: Color.fromARGB(255, 163, 227, 202),
-                  )),
-              Center(
-                  heightFactor: 1,
-                  child: ListTile(
-                    leading: Text(
-                        textAlign: TextAlign.center,
-                        "The name of your city",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        )),
-                    tileColor: Color.fromARGB(255, 163, 227, 202),
-                  )),
+              ListTile(
+                leading: Text(
+                    textAlign: TextAlign.center,
+                    "Your name",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    )),
+                tileColor: Color.fromARGB(111, 146, 216, 235),
+              ),
+              ListTile(
+                  leading: Text(
+                      textAlign: TextAlign.center,
+                      "Your spouse's name",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      )),
+                  tileColor: Color.fromARGB(111, 146, 216, 235)),
+              SizedBox(height: 10),
+              ListTile(
+                  leading: Text(
+                      textAlign: TextAlign.center,
+                      "The colour of your house",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      )),
+                  tileColor: Color.fromARGB(111, 146, 216, 235)),
+              SizedBox(height: 10),
+              ListTile(
+                  leading: Text(
+                      textAlign: TextAlign.center,
+                      "Your city's name",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      )),
+                  tileColor: Color.fromARGB(111, 146, 216, 235)),
+              SizedBox(height: 10),
+              ListTile(
+                  leading: Text(
+                      textAlign: TextAlign.center,
+                      "What are you allergic to",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      )),
+                  tileColor: Color.fromARGB(111, 146, 216, 235)),
+              SizedBox(height: 10),
+              ListTile(
+                  leading: Text(
+                      textAlign: TextAlign.center,
+                      "The name of your city",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      )),
+                  tileColor: Color.fromARGB(111, 146, 216, 235)),
             ]))));
   }
 }

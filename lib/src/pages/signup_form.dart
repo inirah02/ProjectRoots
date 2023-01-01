@@ -339,7 +339,7 @@ class _QueryFormPageState extends State<QueryFormPage> {
                   width: screenSize.width,
                   child: ElevatedButton(
                       child: Text(
-                        'Login',
+                        'Get Started',
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {

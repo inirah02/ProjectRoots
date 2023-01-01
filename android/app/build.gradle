@@ -21,9 +21,10 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-
+apply plugin: 'com.google.gms.google-servicies'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+
 
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -49,7 +50,7 @@ android {
         applicationId "com.example.projectroots"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -72,6 +73,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.gms:google-services:+'
 
 }
-apply plugin:  'com.google.gms.google-servicies'
+
+apply plugin: 'com.google.gms.google-services'

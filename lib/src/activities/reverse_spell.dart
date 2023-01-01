@@ -60,6 +60,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
   //String target_Word=get_target_word();
   bool isStarted = false;
   bool? correctAns;
+  Color? correctTextColor = Colors.green;
   final _fireStore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   late String target_word;
@@ -115,6 +116,12 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     setState(() {
       correctAns = _textEditingController.text.toLowerCase() ==
           target_word.reverse().toLowerCase();
+
+      if (!correctAns!) {
+        correctTextColor = Colors.red;
+      } else {
+        correctTextColor = Colors.green;
+      }
     });
   }
 
@@ -138,7 +145,7 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(116, 152, 87, 1),
+        backgroundColor: Color.fromRGBO(106, 153, 78, 1),
         title: const Text('Reverse Spell'),
       ),
       body: Container(
@@ -183,6 +190,11 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
                 setState(() {
                   correctAns = _textEditingController.text.toLowerCase() ==
                       target_word.reverse().toLowerCase();
+                  if (!correctAns!) {
+                    correctTextColor = Colors.red;
+                  } else {
+                    correctTextColor = Colors.green;
+                  }
                 });
 
                 if (correctAns!) {
@@ -210,15 +222,15 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
               onPressed: _repeat,
               child: Text(
                 "Repeat word",
-                selectionColor: Colors.black,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Colors.black,
                   fontSize: 25,
                 ),
               ),
               style: ElevatedButton.styleFrom(
                   minimumSize: Size(60, 40),
-                  backgroundColor: Color.fromARGB(255, 223, 218, 218),
+                  backgroundColor: Color.fromARGB(255, 247, 243, 243),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             ),
             const SizedBox(
@@ -226,9 +238,9 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
             ),
             Text(result,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 36,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(116, 152, 87, 1),
+                  color: correctTextColor,
                 )),
           ],
         ),
@@ -250,47 +262,47 @@ class _ReverseSpellActivityState extends State<ReverseSpellActivity> {
     }
 
     return Scaffold(
-        backgroundColor: Colors.white10,
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(116, 152, 87, 1),
-          title: Text('Reverse Spell'),
+      backgroundColor: Colors.white10,
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(116, 152, 87, 1),
+        title: Text('Reverse Spell'),
+      ),
+      body: Container(
+        constraints: const BoxConstraints(
+            maxHeight: double.infinity,
+            maxWidth: double.infinity,
+            minHeight: double.infinity,
+            minWidth: double.infinity),
+        decoration: BoxDecoration(
+          color: Color(0xfffffde8),
+          image: DecorationImage(
+            image: AssetImage("assets/images/patient_main_menu_bg.jpg"),
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.2), BlendMode.dstATop),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: Container(
-          constraints: const BoxConstraints(
-              maxHeight: double.infinity,
-              maxWidth: double.infinity,
-              minHeight: double.infinity,
-              minWidth: double.infinity),
-          decoration: BoxDecoration(
-            color: Color(0xfffffde8),
-            image: DecorationImage(
-              image: AssetImage("assets/images/patient_main_menu_bg.jpg"),
-              colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
-              fit: BoxFit.cover,
+        //height: 1000.0,
+        padding: const EdgeInsets.symmetric(vertical: 100.0),
+        child: OutlinedButton(
+          onPressed: _speakWord,
+          child: const Text(
+            'Start Game',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Color.fromARGB(255, 52, 49, 49),
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
             ),
           ),
-          height: 1000.0,
-          padding: const EdgeInsets.symmetric(vertical: 100.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
-            child: ElevatedButton(
-              onPressed: _speakWord,
-              child: const Text(
-                'Start Game',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                  minimumSize: Size(30, 40),
-                  backgroundColor: Color.fromARGB(255, 10, 10, 10),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
-            ),
-          ),
-        ));
+          style: OutlinedButton.styleFrom(
+              minimumSize: Size(30, 40),
+              maximumSize: Size(30, 40),
+              backgroundColor: Colors.transparent,
+              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
+        ),
+      ),
+    );
   }
 }

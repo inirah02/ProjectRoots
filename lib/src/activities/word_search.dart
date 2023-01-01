@@ -202,7 +202,7 @@ class WordSearchActivityState extends State<WordSearchActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFA4C639),
+        backgroundColor: Color.fromRGBO(106, 153, 78, 1),
         title: Text("Word Search"),
       ),
       body: Center(
