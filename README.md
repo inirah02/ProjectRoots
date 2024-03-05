@@ -1,18 +1,29 @@
-# ProjectRoots
-Cisco ThingQbator Project
-Project Roots had its inception as an idea in October 2021, when my friend and I wanted to use our technical background and creative ideologies to build tangible solutions that would remove social stigmas attached to neurological health challenges faced by the most neglected section of the World’s population; Senior Citizens.  
-  
-  
-As my domain of interest lies in Computational Cognition, I wanted to build a project that solved a real world problem in the healthcare space and also exponentiate my technical experience while building it. Cognitive Specialists from NIMHANS and various neurologists helped us validate our idea and help understand the users from a microscopic point of view. Patients and caregivers from numerous Old Age Homes and Care centers also expressed their needs, which boosted the project's morale. 
-  
-We developed a Flutter app with personalized set of cognitive games to stimulate the mind and help maintain cognitive function for better memory reinforcement and to-do reminders for Dementia patients. Visual and memory based games are a fun haven for senior citizens. All the games will be based on crucial information to the patient (collected through a query form and stored in firebase database ) thus, cognitive reinforcement is emphasized. features include :
+# Project Roots
 
-1. Word Search: Classic word search game with a grid of letters and the user has to find key words or answers based on the hints on the hints page
-    
-2. Reverse spell: User has to type the reverse spelling of the word thrown at him / her by the app (voice cue). User can click on repeat word to hear the word again .
-    
-3. Picture Quiz: Visual based questionnaire for visual memory reinforcement. Implemented a dashboard to track the number of right and wrong answers.
-    
-4. To-do reminders: User can create a to-do check list , tick off tasks , add new tasks and delete old ones(not integrated with firebase database yet)
-  
-Seeing the smiles on our users was the ultimate reward, the impact of our solution in real-time, exponentiated our motivation and hope that with Project Roots, the rates of cognitive decline rapidly decrease around the globe and the burden on caregivers is significantly reduced.
+## Overview
+Project Roots is an innovative solution aimed at addressing neurological health challenges faced by senior citizens, particularly focusing on reducing the onset of dementia. Through personalized cognitive games and reminders, the project aims to stimulate cognitive function and provide support for memory reinforcement. This README provides an overview of the project, its **features**, **techniques**, **concepts**, **scope**, and **achievements**.
+
+## Features
+1. **Word Search**: Classic word search game where users find key words based on hints provided.
+2. **Reverse Spell**: Users type the reverse spelling of words given by the app (voice cue available). Repeat word option provided.
+3. **Picture Quiz**: Visual-based questionnaire to reinforce visual memory. Dashboard to track right and wrong answers.
+4. **To-do Reminders**: Allows users to create, manage, and delete to-do lists (not integrated with Firebase yet).
+
+## Techniques and Concepts Used
+- **Flutter**: Utilized for mobile app development, providing a smooth user experience across platforms.
+- **Firebase**: Backend database used for storing crucial information collected through user queries.
+- **Personalization**: Tailored cognitive games and reminders based on individual user needs and preferences.
+- **Validation**: Collaboration with Cognitive Specialists and neurologists for idea validation and user understanding.
+- **User Feedback**: Engaged patients and caregivers from Old Age Homes and Care centers to understand and address real needs.
+- **Business Development**: Explored avenues of business and entrepreneurship, including market research, profit margins calculation, and business model iteration.
+- **Social Impact**: Aimed at reducing cognitive decline globally and alleviating the burden on caregivers through innovative solutions.
+
+## Achievements
+- **Impact**: Project Roots has positively impacted over 350 users across the state, providing tangible benefits in cognitive health support.
+- **Recognition**: Received support and acknowledgment from Cisco ThingQbator and the Nasscom Foundation, providing the platform and resources to develop the project.
+- **User Satisfaction**: Seeing smiles on users' faces served as the ultimate reward, reinforcing the impact of the solution in real-time.
+- **Innovation**: Developed an innovative solution by combining technical expertise with insights from healthcare professionals and user feedback.
+- **Business Development**: Successfully explored the world of business and entrepreneurship, refining the project through market research, profit margin calculations, and iterative business model canvases.
+
+## Scope
+Project Roots targets senior citizens aged 55-75, offering deeply personalized tools to address cognitive health challenges. With a vision to expand its reach globally, the project aims to continuously improve and collaborate with healthcare professionals and users to enhance the quality of life for senior citizens worldwide.
